@@ -3,7 +3,8 @@
 //
 #include <string>
 #include <list>
-#include "SlotH.h"
+#include "slotH.h"
+#include <iostream>
 
 #ifndef AED2324_PRJ1_G56_STUDENT_H
 #define AED2324_PRJ1_G56_STUDENT_H
@@ -15,7 +16,12 @@ private:
     std::string code;
     std::string name;
     std::list<SlotH> schedule;
-
+public:
+    Student(std::string code, std::string name, std::list<SlotH> schedule) {
+        this->code = code;
+        this->name = name;
+        this->schedule = schedule;
+    }
 };
 
 

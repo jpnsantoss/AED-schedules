@@ -3,7 +3,7 @@
 //
 #include <string>
 #include <list>
-#include "SlotH.h"
+#include "slotH.h"
 #ifndef AED2324_PRJ1_G56_UC_H
 #define AED2324_PRJ1_G56_UC_H
 
