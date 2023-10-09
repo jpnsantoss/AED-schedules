@@ -85,14 +85,14 @@ build CMakeFiles/AED2324_PRJ1_G56.dir/classUc.cpp.o: CXX_COMPILER__AED2324_PRJ1_
 
 
 #############################################
-# Link the executable AED2324_PRJ1_G56
+# Link the executable /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56
 
-build AED2324_PRJ1_G56: CXX_EXECUTABLE_LINKER__AED2324_PRJ1_G56_Debug CMakeFiles/AED2324_PRJ1_G56.dir/main.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/student.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/uc.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/slotH.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/classUc.cpp.o
+build /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56: CXX_EXECUTABLE_LINKER__AED2324_PRJ1_G56_Debug CMakeFiles/AED2324_PRJ1_G56.dir/main.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/student.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/uc.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/slotH.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/classUc.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = AED2324_PRJ1_G56
+  TARGET_FILE = /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56
   TARGET_PDB = AED2324_PRJ1_G56.dbg
 
 
@@ -121,6 +121,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
+build AED2324_PRJ1_G56: phony /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56
+
 # =============================================================================
 # Folder targets.
 
@@ -129,7 +131,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/cmake-build-debug
 
-build all: phony AED2324_PRJ1_G56
+build all: phony /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56
 
 # =============================================================================
 # Built-in targets

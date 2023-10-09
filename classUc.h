@@ -14,7 +14,6 @@ private:
     std::string code;
     std::list<SlotH> schedule;
 };
-};
 
 
 #endif //AED2324_PRJ1_G56_CLASSUC_H
