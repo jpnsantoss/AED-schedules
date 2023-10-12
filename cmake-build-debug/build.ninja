@@ -67,8 +67,8 @@ build CMakeFiles/AED2324_PRJ1_G56.dir/uc.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_u
   OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
   OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
 
-build CMakeFiles/AED2324_PRJ1_G56.dir/slotH.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/slotH.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/slotH.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G56.dir/course.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/course.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
+  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/course.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
   OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
@@ -87,7 +87,7 @@ build CMakeFiles/AED2324_PRJ1_G56.dir/classUc.cpp.o: CXX_COMPILER__AED2324_PRJ1_
 #############################################
 # Link the executable /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56
 
-build /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56: CXX_EXECUTABLE_LINKER__AED2324_PRJ1_G56_Debug CMakeFiles/AED2324_PRJ1_G56.dir/main.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/student.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/uc.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/slotH.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/classUc.cpp.o
+build /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56: CXX_EXECUTABLE_LINKER__AED2324_PRJ1_G56_Debug CMakeFiles/AED2324_PRJ1_G56.dir/main.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/student.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/uc.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/course.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/classUc.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
   POST_BUILD = :

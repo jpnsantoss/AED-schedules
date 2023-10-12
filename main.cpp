@@ -1,13 +1,9 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <vector>
-using namespace std;
+#include "stdafx.h"
 
 int main() {
+    /*
     vector<vector<string>> csvData;
-    ifstream file("students_classes.csv");
+    ifstream file("data/students_classes.csv");
 
     if (!file.is_open()) {
         cerr << "Error: Could not open the CSV file." << std::endl;
@@ -32,4 +28,5 @@ int main() {
     }
 
     return 0;
+     */
 }

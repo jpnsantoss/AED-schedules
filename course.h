@@ -1,18 +1,18 @@
 //
 // Created by jpsantos on 09-10-2023.
 //
-#include <string>
+#include "stdafx.h"
 
 #ifndef AED2324_PRJ1_G56_SLOTH_H
 #define AED2324_PRJ1_G56_SLOTH_H
 
-class SlotH {
+class Course {
 private:
-    std::string codeUC;
+    string codeUC;
     double begin;
     double end;
-    std::string type;
-    std::string Weekday;
+    string type;
+    string Weekday;
 
 };
 

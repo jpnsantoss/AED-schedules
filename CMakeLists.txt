@@ -9,8 +9,9 @@ add_executable(AED2324_PRJ1_G56 main.cpp
         student.h
         uc.cpp
         uc.h
-        slotH.cpp
-        slotH.h
+        course.cpp
+        course.h
         classUc.cpp
         classUc.h
+        stdafx.h
 )
