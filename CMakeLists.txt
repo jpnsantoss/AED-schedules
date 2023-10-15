@@ -14,4 +14,8 @@ add_executable(AED2324_PRJ1_G56 main.cpp
         classUc.cpp
         classUc.h
         stdafx.h
+        menu.cpp
+        menu.h
+        file.cpp
+        file.h
 )

@@ -1,6 +1,9 @@
 #include "stdafx.h"
+#include "menu.h"
 
 int main() {
+    menu().main();
+
     /*
     vector<vector<string>> csvData;
     ifstream file("data/students_classes.csv");
