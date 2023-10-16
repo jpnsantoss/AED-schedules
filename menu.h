@@ -5,13 +5,12 @@
 #ifndef AED2324_PRJ1_G56_MENU_H
 #define AED2324_PRJ1_G56_MENU_H
 
-#include "iostream"
 #include "student.h"
-#include "vector"
+#include "stdafx.h"
 
 using namespace std;
 
-class menu {
+class Menu {
 public:
     void main();
 protected:

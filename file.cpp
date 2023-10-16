@@ -3,16 +3,14 @@
 //
 
 #include "file.h"
-#include <fstream>
-#include <string>
 
-void file::readData() {
+void File::readData() {
+    readLessons();
     readClasses();
-    readClassesUC();
     readStudents();
 }
 
-vector<Course> file::readClasses() {
+vector<Course> File::readLessons() {
     vector<Course> data;
     string header;
 
@@ -30,8 +28,8 @@ vector<Course> file::readClasses() {
     return data;
 }
 
-vector<ClassUC> file::readClassesUC() {
-    vector<ClassUC> data;
+vector<Class> File::readClasses() {
+    vector<Class> data;
     string header;
 
     ifstream file("data/classes_per_uc.csv");
@@ -48,7 +46,7 @@ vector<ClassUC> file::readClassesUC() {
     return data;
 }
 
-vector<Student> file::readStudents() {
+vector<Student> File::readStudents() {
     vector<Student> data;
     string header;
 

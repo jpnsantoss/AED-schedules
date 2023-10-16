@@ -5,23 +5,20 @@
 #ifndef AED2324_PRJ1_G56_FILE_H
 #define AED2324_PRJ1_G56_FILE_H
 
-#include "iostream"
-#include "course.h"
-#include "classUc.h"
+#include "lesson.h"
+#include "class.h"
 #include "student.h"
-#include <fstream>
-#include <string>
-#include "vector"
+#include "stdafx.h"
 
 using namespace std;
 
-class file {
+class File {
 public:
     void readData();
 protected:
-    vector<Course> readClasses();
+    vector<Lesson> readLessons();
     vector<Student> readStudents();
-    vector<ClassUC> readClassesUC();
+    vector<Class> readClasses();
 };
 
 

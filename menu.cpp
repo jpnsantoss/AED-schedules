@@ -5,7 +5,7 @@
 #include "menu.h"
 
 
-void menu::main() {
+void Menu::main() {
     cout << "******************************************" << endl;
     cout << "*                                        *" << endl;
     cout << "*        L.EIC Schedules                 *" << endl;
@@ -30,7 +30,7 @@ void menu::main() {
     } while(option != 0 && option != 1 && option != 2 && option != 3);
 }
 
-void menu::information() {
+void Menu::information() {
     cout << "************************************************************" << endl;
     cout << "*  system information                                      *" << endl;
     cout << "*                                                          *" << endl;
@@ -58,7 +58,7 @@ void menu::information() {
     } while(option != 0 && option != 1 && option != 2 && option != 3 && option != 4 && option != 5);
 }
 
-void menu::registration() {
+void Menu::registration() {
     cout << "******************************************" << endl;
     cout << "*  registration                          *" << endl;
     cout << "*                                        *" << endl;
@@ -89,7 +89,7 @@ void menu::registration() {
             option != 4 && option != 5 && option != 6);
 }
 
-void menu::records() {
+void Menu::records() {
     cout << "******************************************" << endl;
     cout << "*  system records                        *" << endl;
     cout << "*                                        *" << endl;
@@ -113,7 +113,7 @@ void menu::records() {
     } while(option != 0 && option != 1 && option != 2 && option != 3);
 }
 
-void menu::viewStudentClass() {
+void Menu::viewStudentClass() {
     cout << "Choose one:" << endl;
     cout << "1) Student" << endl;
     cout << "2) Class" << endl;
@@ -133,7 +133,7 @@ void menu::viewStudentClass() {
     } while(option != 1 && option != 2);
 }
 
-void menu::viewStudent() {
+void Menu::viewStudent() {
     cout << "Enter student code: ";
     int code;
     cin >> code;
@@ -147,7 +147,7 @@ void menu::viewStudent() {
     goToMenu();
 }
 
-void menu::viewClass() {
+void Menu::viewClass() {
     cout << "Enter class code: ";
     string code;
     cin >> code;
@@ -161,8 +161,10 @@ void menu::viewClass() {
     goToMenu();
 }
 
-void menu::viewStudentsCCY() {
+void Menu::viewStudentsCCY() {
     vector<Student> list;
+    int year;
+    string code;
     cout << "Choose one:" << endl;
     cout << "1) Course" << endl;
     cout << "2) Class" << endl;
@@ -172,9 +174,18 @@ void menu::viewStudentsCCY() {
     do{
         cin >> option;
         switch(option) {
-            case 1: break;
-            case 2: break;
-            case 3: break;
+            case 1: {
+                cout << "Enter course code: ";
+                cin >> code;
+            } break;
+            case 2: {
+                cout << "Enter class code: ";
+                cin >> code;
+            } break;
+            case 3: {
+                cout << "Enter the year: ";
+                cin >> year;
+            } break;
             default: cout << "Invalid option, please try again: ";
         }
     } while(option != 1 && option != 2 && option != 3);
@@ -188,7 +199,7 @@ void menu::viewStudentsCCY() {
     goToMenu();
 }
 
-void menu::viewNumStudents() {
+void Menu::viewNumStudents() {
     cout << "Enter number of UCs: ";
     int ucs;
     cin >> ucs;
@@ -199,8 +210,10 @@ void menu::viewNumStudents() {
     goToMenu();
 }
 
-void menu::viewCYUoccupation() {
+void Menu::viewCYUoccupation() {
     int occupation = 0;
+    string code;
+    int year;
     cout << "Choose one:" << endl;
     cout << "1) Class" << endl;
     cout << "2) Year" << endl;
@@ -210,9 +223,18 @@ void menu::viewCYUoccupation() {
     do{
         cin >> option;
         switch(option) {
-            case 1: break;
-            case 2: break;
-            case 3: break;
+            case 1: {
+                cout << "Enter class code: ";
+                cin >> code;
+            } break;
+            case 2: {
+                cout << "Enter the year: ";
+                cin >> year;
+            } break;
+            case 3: {
+                cout << "Enter UC code: ";
+                cin >> code;
+            } break;
             default: cout << "Invalid option, please try again: ";
         }
     } while(option != 1 && option != 2 && option != 3);
@@ -222,7 +244,7 @@ void menu::viewCYUoccupation() {
     goToMenu();
 }
 
-void menu::viewUCgreatest() {
+void Menu::viewUCgreatest() {
     cout << "n************************************************************" << endl;
     cout << "   ucs with the greatest number of students" << endl;
     cout << endl;
@@ -232,31 +254,31 @@ void menu::viewUCgreatest() {
     goToMenu();
 }
 
-void menu::menuRegUC() {
+void Menu::menuRegUC() {
 
 }
 
-void menu::menuRegClass() {
+void Menu::menuRegClass() {
 
 }
 
-void menu::menuRemoveUC() {
+void Menu::menuRemoveUC() {
 
 }
 
-void menu::menuRemoveClass() {
+void Menu::menuRemoveClass() {
 
 }
 
-void menu::menuSwitchUC() {
+void Menu::menuSwitchUC() {
 
 }
 
-void menu::menuSwitchClass() {
+void Menu::menuSwitchClass() {
 
 }
 
-void menu::goToMenu() {
+void Menu::goToMenu() {
     cout << "option: ";
     int option;
     do{

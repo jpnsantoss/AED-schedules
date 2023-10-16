@@ -9,10 +9,10 @@ add_executable(AED2324_PRJ1_G56 main.cpp
         student.h
         uc.cpp
         uc.h
-        course.cpp
-        course.h
-        classUc.cpp
-        classUc.h
+        lesson.cpp
+        lesson.h
+        class.cpp
+        class.h
         stdafx.h
         menu.cpp
         menu.h

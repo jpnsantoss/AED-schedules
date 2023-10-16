@@ -3,10 +3,10 @@
 //
 #include "stdafx.h"
 
-#ifndef AED2324_PRJ1_G56_SLOTH_H
-#define AED2324_PRJ1_G56_SLOTH_H
+#ifndef AED2324_PRJ1_G56_LESSON_H
+#define AED2324_PRJ1_G56_LESSON_H
 
-class Course {
+class Lesson {
 private:
     string codeUC;
     double begin;
@@ -17,4 +17,4 @@ private:
 };
 
 
-#endif //AED2324_PRJ1_G56_SLOTH_H
+#endif //AED2324_PRJ1_G56_LESSON_H
