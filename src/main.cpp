@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "menu.h"
-
+#include "dataset.h"
 int main() {
-    menu().main();
 
+    Menu().main();
+    Dataset dataset;
     /*
     vector<vector<string>> csvData;
     ifstream file("data/students_classes.csv");

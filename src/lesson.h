@@ -8,11 +8,11 @@
 
 class Lesson {
 private:
-    string codeUC;
+    string codeUc;
     double begin;
     double end;
     string type;
-    string Weekday;
+    string weekday;
 
 };
 

@@ -11,7 +11,7 @@
 class Class {
 private:
     string code;
-    list<Course> schedule;
+    list<Lesson> schedule;
 };
 
 

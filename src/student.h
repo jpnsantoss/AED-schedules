@@ -3,6 +3,7 @@
 //
 #include "stdafx.h"
 #include "lesson.h"
+#include "class.h"
 
 #ifndef AED2324_PRJ1_G56_STUDENT_H
 #define AED2324_PRJ1_G56_STUDENT_H
@@ -14,6 +15,7 @@ private:
     string code;
     string name;
     list<Lesson> schedule;
+    list<Class> classes;
 public:
 };
 
