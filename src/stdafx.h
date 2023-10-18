@@ -1,6 +1,8 @@
 //
 // Created by jpsantos on 12-10-2023.
 //
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <vector>

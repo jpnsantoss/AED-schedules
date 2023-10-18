@@ -4,9 +4,9 @@
 
 #include "csvReader.h"
 
-vector<classes_per_uc> CsvReader::readClassesPerUc() {
+vector<file_classes_per_uc> CsvReader::readClassesPerUc() {
     string header;
-    vector<classes_per_uc> data;
+    vector<file_classes_per_uc> data;
     ifstream file("classes_per_uc.csv");
     if(!file.is_open())
         cout << "Error: File 'classes_per_uc.csv' not opened." << endl;
@@ -16,21 +16,21 @@ vector<classes_per_uc> CsvReader::readClassesPerUc() {
     while (getline(file, header)) {
         stringstream line(header);
         string buffer;
-        classes_per_uc row;
+        file_classes_per_uc row;
         getline(line, buffer, ',');
-        row.UcCode = buffer;
+        row.ucCode = buffer;
 
         getline(line, buffer, '\r');
-        row.ClassCode = buffer;
+        row.classCode = buffer;
 
         data.push_back(row);
     }
     return data;
 }
 
-vector<classes> CsvReader::readClasses() {
+vector<file_classes> CsvReader::readClasses() {
     string header;
-    vector<classes> data;
+    vector<file_classes> data;
     ifstream file("classes.csv");
     if(!file.is_open())
         cout << "Error: File 'classes_per_uc.csv' not opened." << endl;
@@ -40,41 +40,35 @@ vector<classes> CsvReader::readClasses() {
     while (getline(file, header)) {
         stringstream line(header);
         string buffer;
-        classes row;
-        double start;
-        double duration;
+        file_classes row;
 
         getline(line, buffer, ',');
-        row.ClassCode = buffer;
+        row.classCode = buffer;
 
         getline(line, buffer, ',');
-        row.UcCode = buffer;
+        row.ucCode = buffer;
 
         getline(line, buffer, ',');
-        row.Weekday = buffer;
+        row.weekday = buffer;
 
         getline(line, buffer, ',');
-        row.StartHour = buffer;
-        start = stod(buffer);
+        row.startHour = buffer;
 
         getline(line, buffer, ',');
-        row.Duration = buffer;
-        duration = stod(buffer);
-
-        row.EndHour = start + duration;
+        row.duration = buffer;
 
 
         getline(line, buffer, '\r');
-        row.Type = buffer;
+        row.type = buffer;
 
         data.push_back(row);
     }
     return data;
 }
 
-vector<students_classes> CsvReader::readStudentsClasses() {
+vector<file_students_classes> CsvReader::readStudentsClasses() {
     string header;
-    vector<students_classes> data;
+    vector<file_students_classes> data;
     ifstream file("classes_per_uc.csv");
     if(!file.is_open())
         cout << "Error: File 'classes_per_uc.csv' not opened." << endl;
@@ -84,18 +78,18 @@ vector<students_classes> CsvReader::readStudentsClasses() {
     while (getline(file, header)) {
         stringstream line(header);
         string buffer;
-        students_classes row;
+        file_students_classes row;
 
         getline(line,buffer,',');
-        row.StudentCode = buffer;
+        row.studentCode = buffer;
 
         getline(line,buffer,',');
 
         getline(line,buffer,',');
-        row.UcCode = buffer;
+        row.ucCode = buffer;
 
         getline(line,buffer,'\r');
-        row.ClassCode = buffer;
+        row.classCode = buffer;
 
         data.push_back(row);
     }

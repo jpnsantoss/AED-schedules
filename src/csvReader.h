@@ -10,38 +10,30 @@
 #include "student.h"
 #include "stdafx.h"
 
-struct classes_per_uc{
-    string UcCode;
-    string ClassCode;
+struct file_classes_per_uc{
+    string ucCode;
+    string classCode;
 };
-struct classes{
-    string ClassCode;
-    string UcCode;
-    string Weekday;
-    string StartHour;
-    string Duration;
-    double EndHour;
-    string Type;
+struct file_classes{
+    string classCode;
+    string ucCode;
+    string weekday;
+    string startHour;
+    string duration;
+    string type;
 };
-struct students_classes{
-    string StudentCode;
-    string StudentName;
-    string UcCode;
-    string ClassCode;
-};
-struct lesson{
-    string Weekday;
-    double StartHour;
-    double Duration;
-    double EndHour;
-    string Type;
+struct file_students_classes{
+    string studentCode;
+    string studentName;
+    string ucCode;
+    string classCode;
 };
 
 class CsvReader {
 public:
-    vector<classes_per_uc> readClassesPerUc();
-    vector<classes> readClasses();
-    vector<students_classes> readStudentsClasses();
+    vector<file_classes_per_uc> readClassesPerUc();
+    vector<file_classes> readClasses();
+    vector<file_students_classes> readStudentsClasses();
 };
 
 
