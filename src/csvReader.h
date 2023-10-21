@@ -5,9 +5,6 @@
 #ifndef AED2324_PRJ1_G56_CSVREADER_H
 #define AED2324_PRJ1_G56_CSVREADER_H
 
-#include "lesson.h"
-#include "class.h"
-#include "student.h"
 #include "stdafx.h"
 
 struct file_classes_per_uc{

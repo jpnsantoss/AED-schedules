@@ -1,24 +1,22 @@
 //
 // Created by jpsantos on 09-10-2023.
 //
-#include <utility>
+
+#ifndef AED2324_PRJ1_G56_STUDENT_H
+#define AED2324_PRJ1_G56_STUDENT_H
 
 #include "stdafx.h"
 #include "lesson.h"
 #include "class.h"
 
-#ifndef AED2324_PRJ1_G56_STUDENT_H
-#define AED2324_PRJ1_G56_STUDENT_H
-
-
 class Student {
 private:
     string code;
     string name;
-    list<Lesson> lessons;
-    list<Class> classes;
+    pair<string, string> classesToUcs;
 
 public:
+    /*
     // Constructor
     Student(string  studentCode, string  studentName)
             : code(std::move(studentCode)), name(std::move(studentName)) {
@@ -27,7 +25,7 @@ public:
 
     // Methods to add lessons to the schedule and classes to the list.
     void addLessonToSchedule(const Lesson& lesson) {
-        schedule.push_back(lesson);
+        lessons.push_back(lesson);
     }
 
     void addClass(const Class& classObj) {
@@ -35,6 +33,7 @@ public:
     }
 
     // Additional methods as needed for managing the student's data.
+     */
 };
 
 

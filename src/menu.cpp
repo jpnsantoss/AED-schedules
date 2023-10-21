@@ -4,7 +4,6 @@
 
 #include "menu.h"
 
-
 void Menu::main() {
     cout << "******************************************" << endl;
     cout << "*                                        *" << endl;

@@ -5,8 +5,8 @@
 #ifndef AED2324_PRJ1_G56_MENU_H
 #define AED2324_PRJ1_G56_MENU_H
 
-#include "student.h"
 #include "stdafx.h"
+#include "student.h"
 
 using namespace std;
 

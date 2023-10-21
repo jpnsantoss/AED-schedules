@@ -1,7 +1,6 @@
 //
 // Created by jpsantos on 12-10-2023.
 //
-#pragma once
 
 #include <iostream>
 #include <string>
@@ -9,5 +8,6 @@
 #include <list>
 #include <fstream>
 #include <sstream>
+#include <utility>
 
 using namespace std;

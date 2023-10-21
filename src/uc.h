@@ -1,18 +1,18 @@
 //
 // Created by jpsantos on 09-10-2023.
 //
-#include <utility>
-
-#include "lesson.h"
 #ifndef AED2324_PRJ1_G56_UC_H
 #define AED2324_PRJ1_G56_UC_H
 
+#include "stdafx.h"
+#include "lesson.h"
 class Uc {
 private:
     string code;
-    list<Lesson> classes;
+    list<Lesson> lessons;
 
 public:
+    /*
     // Constructor
     explicit Uc(string  ucCode) : code(std::move(ucCode)) {}
 
@@ -30,6 +30,7 @@ public:
     void addClass(const Lesson& lesson) {
         classes.push_back(lesson);
     }
+     */
 };
 
 #endif //AED2324_PRJ1_G56_UC_H

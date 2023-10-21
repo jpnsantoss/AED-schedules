@@ -8,13 +8,14 @@ Dataset::Dataset() {
     CsvReader read;
     vector<file_classes_per_uc> fileClassesPerUc = read.readClassesPerUc();
     vector<file_classes> fileClasses = read.readClasses();
-    vector<file_students_classes> fileStudentsClasses = read.readStudentsClasses();
+    //vector<file_students_classes> fileStudentsClasses = read.readStudentsClasses();
     createUcs(fileClassesPerUc);
     createLessons(fileClasses);
     createClasses(fileClassesPerUc);
 }
 
 void Dataset::createUcs(const vector<file_classes_per_uc>& fileClassesPerUc) {
+    /*
     ucs.clear();
     vector<string> ucCodes;
     for(const file_classes_per_uc& data: fileClassesPerUc) {
@@ -28,9 +29,11 @@ void Dataset::createUcs(const vector<file_classes_per_uc>& fileClassesPerUc) {
         Uc newUc(code);
         ucs.push_back(newUc);
     }
+     */
 }
 
 void Dataset::createLessons(const vector<file_classes>& fileClasses) {
+    /*
     lessons.clear();
 
     for (const file_classes& data : fileClasses) {
@@ -41,9 +44,11 @@ void Dataset::createLessons(const vector<file_classes>& fileClasses) {
         Lesson newLesson(data.ucCode, data.classCode, start, endHour, data.type, data.weekday);
         lessons.push_back(newLesson);
     }
+     */
 }
 
 void Dataset::createClasses(const vector<file_classes_per_uc>& fileClassesPerUc) {
+    /*
     classes.clear();
     vector<string> classCodes;
     for(const file_classes_per_uc& data: fileClassesPerUc) {
@@ -62,6 +67,7 @@ void Dataset::createClasses(const vector<file_classes_per_uc>& fileClassesPerUc)
         }
         classes.push_back(newClass);
     }
+     */
 }
 
 

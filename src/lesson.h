@@ -2,21 +2,22 @@
 // Created by jpsantos on 09-10-2023.
 //
 
-#include "stdafx.h"
-
 #ifndef AED2324_PRJ1_G56_LESSON_H
 #define AED2324_PRJ1_G56_LESSON_H
+
+#include "stdafx.h"
 
 class Lesson {
 private:
     string ucCode;
-    string classCode; // Add classCode
+    string classCode;
     double startHour;
     double endHour;
     string type;
     string weekday;
 
 public:
+
     Lesson(string ucCode, string classCode, double startHour, double endHour, string type, string weekday)
             : ucCode(std::move(ucCode)), classCode(std::move(classCode)), startHour(startHour), endHour(endHour), type(std::move(type)), weekday(std::move(weekday)) {
         // Constructor body is empty because all the work is done in the member initializer list.
