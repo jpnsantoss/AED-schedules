@@ -69,7 +69,7 @@ vector<file_classes> CsvReader::readClasses() {
 vector<file_students_classes> CsvReader::readStudentsClasses() {
     string header;
     vector<file_students_classes> data;
-    ifstream file("classes_per_uc.csv");
+    ifstream file("students_classes.csv");
     if(!file.is_open())
         cout << "Error: File 'classes_per_uc.csv' not opened." << endl;
 
@@ -84,6 +84,7 @@ vector<file_students_classes> CsvReader::readStudentsClasses() {
         row.studentCode = buffer;
 
         getline(line,buffer,',');
+        row.studentName = buffer;
 
         getline(line,buffer,',');
         row.ucCode = buffer;

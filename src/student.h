@@ -11,30 +11,40 @@
 
 class Student {
 private:
-    string code;
+    string studentCode;
     string name;
-    pair<string, string> classesToUcs;
+
+    //pair<uc, class>
+    vector<pair<string, string>> classesPerUcs;
 
 public:
-    /*
+
     // Constructor
-    Student(string  studentCode, string  studentName)
-            : code(std::move(studentCode)), name(std::move(studentName)) {
+    Student(string studentCode, string studentName)
+            : studentCode(std::move(studentCode)), name(std::move(studentName)) {
         // Initialize other members as needed.
     }
 
     // Methods to add lessons to the schedule and classes to the list.
-    void addLessonToSchedule(const Lesson& lesson) {
-        lessons.push_back(lesson);
+    void addClassPerUc(const pair<string, string>& classPerUc) {
+        classesPerUcs.push_back(classPerUc);
     }
 
-    void addClass(const Class& classObj) {
-        classes.push_back(classObj);
+    // Getter for code
+    [[nodiscard]] string getStudentCode() const {
+        return studentCode;
     }
 
-    // Additional methods as needed for managing the student's data.
-     */
+    // Getter for name
+    [[nodiscard]] string getName() const {
+        return name;
+    }
+
+    [[nodiscard]] const vector<pair<string, string>>& getClassesPerUcs() const {
+        return classesPerUcs;
+    }
 };
+
 
 
 #endif //AED2324_PRJ1_G56_STUDENT_H
