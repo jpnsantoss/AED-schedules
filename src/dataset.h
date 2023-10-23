@@ -41,8 +41,8 @@ public:
 protected:
     void createUcs(const vector<file_classes_per_uc>& fileClassesPerUc);
     void createLessons(const vector<file_classes>& fileClasses);
+    void createStudents(const vector<file_students_classes> &fileStudentsClasses);
     void createClasses(const vector<file_classes_per_uc>& fileClassesPerUc);
-    //void createStudents();
 
 };
 

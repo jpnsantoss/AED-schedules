@@ -2,9 +2,11 @@
 #include "menu.h"
 #include "dataset.h"
 int main() {
-
-    Menu().main();
     Dataset dataset;
+    Menu().main();
+
+
+
     /*
     vector<vector<string>> csvData;
     ifstream file("data/students_classes.csv");
