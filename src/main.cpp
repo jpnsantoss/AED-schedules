@@ -1,38 +1,58 @@
-#include "stdafx.h"
-#include "menu.h"
-#include "dataset.h"
+//
+// Created by jpsantos on 25-10-2023.
+//
+
+#include "Dataset.h"
+#include "Menu.h"
+
+
+using namespace std;
+
 int main() {
     Dataset dataset;
     Menu().main();
+    /*
+    Dataset dataset;
+    cout << "Students:" << "\n\n";
 
+    const std::set<Student>& students = dataset.getStudents();
 
+    if (students.empty()) {
+        cout << "No students in the dataset." << endl;
+    } else {
+        for (const auto& student : students) {
+            cout << "Student Name: " << student.getStudentName() << "\n";
+            cout << "Student Code: " << student.getStudentCode() << "\n";
+            cout << "UcClasses:" << "\n";
+
+            for (const auto& ucClass : student.getUcClasses()) {
+                cout << "  " << ucClass.getUcClassCodes().first << " - " << ucClass.getUcClassCodes().second << "\n";
+            }
+
+            cout << "\n";
+        }
+    }
+     */
 
     /*
-    vector<vector<string>> csvData;
-    ifstream file("data/students_classes.csv");
+    Dataset dataset;
+    cout << "UcClasses:" << "\n\n";
 
-    if (!file.is_open()) {
-        cerr << "Error: Could not open the CSV file." << std::endl;
-        return 1;
-    }
+    const std::vector<UcClass>& ucClasses = dataset.getUcClasses();
 
-    string line;
-    while (getline(file, line)) {
-        istringstream iss(line);
-        string word;
-        vector<string> row;
-        while (getline(iss, word, ',')) {
-            row.push_back(word);
+    if (ucClasses.empty()) {
+        cout << "No UcClasses in the dataset." << endl;
+    } else {
+        for (const auto& ucClass : ucClasses) {
+            cout << "UcClass Code: " << ucClass.getUcClassCodes().first << " - " << ucClass.getUcClassCodes().second << "\n";
+            cout << "Lessons:" << "\n";
+            for (const auto& lesson : ucClass.getLessons()) {
+                cout << "  Weekday: " << lesson.getWeekday() << "\n";
+                cout << "  Start Time: " << lesson.getStart() << "\n";
+                cout << "  Duration: " << lesson.getEnd() << " minutes\n";
+                cout << "  Type: " << lesson.getType() << "\n\n";
+            }
         }
-        csvData.push_back(row);
     }
-    for (const auto& row : csvData) {
-        for (const auto& word : row) {
-            cout << word << " ";
-        }
-        cout << endl;
-    }
-
-    return 0;
      */
 }

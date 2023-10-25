@@ -49,50 +49,44 @@ cmake_ninja_workdir = /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/cmake-build-d
 
 build cmake_object_order_depends_target_AED2324_PRJ1_G56: phony || CMakeFiles/AED2324_PRJ1_G56.dir
 
+build CMakeFiles/AED2324_PRJ1_G56.dir/src/Lesson.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/Lesson.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
+  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/Lesson.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
+  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
+
+build CMakeFiles/AED2324_PRJ1_G56.dir/src/UcClass.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/UcClass.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
+  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/UcClass.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
+  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
+
+build CMakeFiles/AED2324_PRJ1_G56.dir/src/Student.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/Student.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
+  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/Student.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
+  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
+
+build CMakeFiles/AED2324_PRJ1_G56.dir/src/Dataset.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/Dataset.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
+  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/Dataset.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
+  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
+
+build CMakeFiles/AED2324_PRJ1_G56.dir/src/Request.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/Request.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
+  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/Request.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
+  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
+
 build CMakeFiles/AED2324_PRJ1_G56.dir/src/main.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/main.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
   DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/main.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
   OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
 
-build CMakeFiles/AED2324_PRJ1_G56.dir/src/student.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/student.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/student.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
-
-build CMakeFiles/AED2324_PRJ1_G56.dir/src/uc.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/uc.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/uc.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
-
-build CMakeFiles/AED2324_PRJ1_G56.dir/src/lesson.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/lesson.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/lesson.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
-
-build CMakeFiles/AED2324_PRJ1_G56.dir/src/class.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/class.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/class.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
-
-build CMakeFiles/AED2324_PRJ1_G56.dir/src/menu.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/menu.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/menu.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
-
-build CMakeFiles/AED2324_PRJ1_G56.dir/src/csvReader.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/csvReader.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/csvReader.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
-  OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
-
-build CMakeFiles/AED2324_PRJ1_G56.dir/src/dataset.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/dataset.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
-  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/dataset.cpp.o.d
+build CMakeFiles/AED2324_PRJ1_G56.dir/src/Menu.cpp.o: CXX_COMPILER__AED2324_PRJ1_G56_unscanned_Debug /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/src/Menu.cpp || cmake_object_order_depends_target_AED2324_PRJ1_G56
+  DEP_FILE = CMakeFiles/AED2324_PRJ1_G56.dir/src/Menu.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
   OBJECT_FILE_DIR = CMakeFiles/AED2324_PRJ1_G56.dir/src
@@ -105,7 +99,7 @@ build CMakeFiles/AED2324_PRJ1_G56.dir/src/dataset.cpp.o: CXX_COMPILER__AED2324_P
 #############################################
 # Link the executable /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56
 
-build /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56: CXX_EXECUTABLE_LINKER__AED2324_PRJ1_G56_Debug CMakeFiles/AED2324_PRJ1_G56.dir/src/main.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/student.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/uc.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/lesson.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/class.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/menu.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/csvReader.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/dataset.cpp.o
+build /home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/AED2324_PRJ1_G56: CXX_EXECUTABLE_LINKER__AED2324_PRJ1_G56_Debug CMakeFiles/AED2324_PRJ1_G56.dir/src/Lesson.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/UcClass.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/Student.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/Dataset.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/Request.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/main.cpp.o CMakeFiles/AED2324_PRJ1_G56.dir/src/Menu.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/AED2324_PRJ1_G56.dir
   POST_BUILD = :

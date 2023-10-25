@@ -1,15 +1,14 @@
 //
-// Created by Maureen Ah-shu on 15/10/2023.
+// Created by jpsantos on 25-10-2023.
 //
 
 #ifndef AED2324_PRJ1_G56_MENU_H
 #define AED2324_PRJ1_G56_MENU_H
 
-#include "stdafx.h"
-#include "student.h"
-
+#include <iostream>
+#include <vector>
+#include "Student.h"
 using namespace std;
-
 class Menu {
 public:
     void main();
@@ -32,6 +31,7 @@ protected:
     void menuSwitchClass();
     void goToMenu();
 };
+
 
 
 #endif //AED2324_PRJ1_G56_MENU_H
