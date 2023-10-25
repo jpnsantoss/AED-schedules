@@ -1,8 +1,8 @@
 //
-// Created by Maureen Ah-shu on 15/10/2023.
+// Created by jpsantos on 25-10-2023.
 //
 
-#include "menu.h"
+#include "Menu.h"
 
 void Menu::main() {
     cout << "******************************************" << endl;
