@@ -8,6 +8,12 @@
 
 using namespace std;
 
+/**
+ * @brief main
+ * Initializes the dataset and opens the main menu.
+ * Shows the main menu.
+ * @return 0
+ */
 int main() {
     Dataset dataset;
     Menu().main();
