@@ -27,3 +27,12 @@ std::string Lesson::getType() const {
 std::string Lesson::getWeekday() const {
     return weekday;
 }
+
+bool Lesson::compatible(const Lesson& lesson) const {
+    if (this-> weekday != lesson.getWeekday()) return true;
+
+    if(this->start >= lesson.getEnd() || this->end <= lesson.getStart()) return true;
+
+    return false;
+}
+

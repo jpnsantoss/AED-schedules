@@ -54,4 +54,16 @@ void Student::reset() {
     ucClasses.clear(); // Assuming you want to clear the list of UcClasses
 }
 
+void Student::removeUcClass(UcClass* ucClass) {
+    ucClasses.remove(*ucClass);
+}
+
+list<Lesson> Student::getLessons() const {
+    list<Lesson> allLessons;
+    for (const UcClass& ucClass : ucClasses) {
+        allLessons.insert(allLessons.end(), ucClass.getLessons().begin(), ucClass.getLessons().end());
+    }
+    return allLessons;
+}
+
 

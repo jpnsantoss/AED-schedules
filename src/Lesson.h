@@ -24,6 +24,7 @@ public:
     double getEnd() const;
     std::string getType() const;
     std::string getWeekday() const;
+    bool compatible(const Lesson& lesson) const;
 };
 
 

@@ -40,4 +40,8 @@ const list<Lesson> &UcClass::getLessons() const {
     return lessons;
 }
 
+bool UcClass::operator==(const UcClass &other) const {
+    return (ucCode == other.ucCode) && (classCode == other.classCode);
+}
+
 

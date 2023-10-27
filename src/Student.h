@@ -36,6 +36,11 @@ public:
     bool operator<(const Student &other) const;
 
     void reset();
+
+    void removeUcClass(UcClass* ucClass);
+
+    list<Lesson> getLessons() const;
+
 };
 
 
