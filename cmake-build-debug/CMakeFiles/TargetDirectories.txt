@@ -1,3 +1,0 @@
-/home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/cmake-build-debug/CMakeFiles/AED2324_PRJ1_G56.dir
-/home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/jpsantos/Desktop/Feup/AED2324_PRJ1_G56/cmake-build-debug/CMakeFiles/rebuild_cache.dir
