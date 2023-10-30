@@ -27,7 +27,7 @@ const std::queue<Request>& Dataset::getHistory() const {
 }
 
 void Dataset::readUcClasses() {
-    ifstream file("classes_per_uc.csv");
+    ifstream file("files/classes_per_uc.csv");
     if (!file.is_open()) {
         cout << "Error: File 'classes_per_uc.csv' not opened." << endl;
         return;
@@ -46,7 +46,7 @@ void Dataset::readUcClasses() {
 }
 
 void Dataset::readLessons() {
-    ifstream file("classes.csv");
+    ifstream file("files/classes.csv");
     if (!file.is_open()) {
         cout << "Error: File 'classes.csv' not opened." << endl;
         return;  // Exit the method if the file couldn't be opened.
@@ -77,7 +77,7 @@ void Dataset::readLessons() {
 }
 
 void Dataset::readStudents() {
-    ifstream file("students_classes.csv");
+    ifstream file("files/students_classes.csv");
     if (!file.is_open()) {
         cout << "Error: File 'students_classes.csv' not opened." << endl;
         return;  // Exit the method if the file couldn't be opened.
@@ -114,4 +114,11 @@ void Dataset::readStudents() {
     }
     students.insert(currentStudent);
     UcClass::capacity = maxCapacity;
+}
+
+void Dataset::handleRequests() {
+    for(int i = 0; i < requests.size(); i++) {
+        requests.front().process(ucClasses);
+        requests.pop();
+    }
 }

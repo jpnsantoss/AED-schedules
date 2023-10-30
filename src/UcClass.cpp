@@ -6,6 +6,7 @@
 
 #include <utility>
 int UcClass::capacity = 0;
+
 UcClass::UcClass(string ucCode, string classCode) {
     this->ucCode = std::move(ucCode);
     this->classCode = std::move(classCode);
