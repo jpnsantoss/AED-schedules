@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
     Dataset dataset;
-    Menu().main();
+    Menu(dataset).main();
     /*
     Dataset dataset;
     cout << "Students:" << "\n\n";
