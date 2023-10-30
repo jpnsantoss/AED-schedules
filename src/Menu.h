@@ -8,17 +8,22 @@
 #include <iostream>
 #include <vector>
 #include "Student.h"
+#include "Consult.h"
+
 using namespace std;
+
 class Menu {
 public:
+    Menu(const Dataset &dataset) : consult(dataset) {}
     void main();
-protected:
+private:
+    Consult consult;
     void information();
     void registration();
     void records();
-    void viewStudentClass();
-    void viewStudent();
-    void viewClass();
+    void viewSchedule();
+    void viewStudentSchedule();
+    void viewClassSchedule();
     void viewStudentsCCY();
     void viewNumStudents();
     void viewCYUoccupation();

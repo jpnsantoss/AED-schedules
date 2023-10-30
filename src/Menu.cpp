@@ -37,7 +37,7 @@ void Menu::information() {
     cout << "*     2) STUDENTS WITHIN A CLASS, COURSE OR YEAR           *" << endl;
     cout << "*     3) NUMBER OF STUDENTS REGISTERED IN AT LEAST N UCs   *" << endl;
     cout << "*     4) CLASS, YEAR OR UC OCCUPATION                      *" << endl;
-    cout << "*     5) UCs WITH THE GREATEST NUMBER OF STUDENTS          *" << endl;
+    cout << "*     5) UCs WITH THE GREATEST NUMBER OF STUDENTS  +++     *" << endl;
     cout << "*                                                          *" << endl;
     cout << "*                                                 0) BACK  *" << endl;
     cout << "******************************************+*****************" << endl;
@@ -46,7 +46,7 @@ void Menu::information() {
     do{
         cin >> option;
         switch(option) {
-            case 1: viewStudentClass(); break;
+            case 1: viewSchedule(); break;
             case 2: viewStudentsCCY(); break;
             case 3: viewNumStudents(); break;
             case 4: viewCYUoccupation(); break;
@@ -112,7 +112,7 @@ void Menu::records() {
     } while(option != 0 && option != 1 && option != 2 && option != 3);
 }
 
-void Menu::viewStudentClass() {
+void Menu::viewSchedule() {
     cout << "Choose one:" << endl;
     cout << "1) Student" << endl;
     cout << "2) Class" << endl;
@@ -121,10 +121,10 @@ void Menu::viewStudentClass() {
     do{
         cin >> option;
         if (option == 1){
-            viewStudent();
+            viewStudentSchedule();
         } else {
             if (option == 2) {
-                viewClass();
+                viewClassSchedule();
             } else {
                 cout << "Invalid option, please try again: ";
             }
@@ -132,41 +132,55 @@ void Menu::viewStudentClass() {
     } while(option != 1 && option != 2);
 }
 
-void Menu::viewStudent() {
+void Menu::viewStudentSchedule() {
     cout << "Enter student code: ";
-    int code;
+    string code;
     cin >> code;
-
-    cout << "\n************************************************************" << endl;
+    list<Schedule> schedule = consult.findStudentSchedule(code);
+    
+    cout << "\n**************************************************************************************" << endl;
     cout << "   student schedule" << endl;
     cout << endl;
+
+    for(const auto& s: schedule) {
+        cout << "Weekday: " << s.weekday << " \tUC: " << s.ucCode << " \tClass:" << s.classCode
+        << " \tType: " << s.type << " \tHour: " << s.start << " \tEnd: " << s.end << endl;
+    }
+
     cout << endl;
-    cout << "                                                   0) BACK  " << endl;
-    cout << "************************************************************" << endl;
+    cout << "0) BACK" << endl;
+    cout << "**************************************************************************************" << endl;
     goToMenu();
 }
 
-void Menu::viewClass() {
+void Menu::viewClassSchedule() {
     cout << "Enter class code: ";
     string code;
     cin >> code;
+    list<Schedule> schedule = consult.findClassSchedule(code);
 
-    cout << "\n************************************************************" << endl;
+    cout << "**************************************************************************************" << endl;
     cout << "   class schedule" << endl;
     cout << endl;
+
+    for(const auto& s: schedule) {
+            cout << "Weekday: " << s.weekday << " \tUC: " << s.ucCode << " \tClass:" << s.classCode
+                 << " \tType: " << s.type << " \tHour: " << s.start << " \tEnd: " << s.end << endl;
+    }
+
     cout << endl;
-    cout << "                                                   0) BACK  " << endl;
-    cout << "************************************************************" << endl;
+    cout << "0) BACK" << endl;
+    cout << "**************************************************************************************" << endl;
     goToMenu();
 }
 
 void Menu::viewStudentsCCY() {
-    vector<Student> list;
+    set<Student> students;
     int year;
     string code;
     cout << "Choose one:" << endl;
-    cout << "1) Course" << endl;
-    cout << "2) Class" << endl;
+    cout << "1) Class" << endl;
+    cout << "2) Course" << endl;
     cout << "3) Year" << endl;
     cout << "option: ";
     int option;
@@ -174,16 +188,18 @@ void Menu::viewStudentsCCY() {
         cin >> option;
         switch(option) {
             case 1: {
-                cout << "Enter course code: ";
+                cout << "Enter class code: ";
                 cin >> code;
+                students = consult.findClassStudents(code);
             } break;
             case 2: {
-                cout << "Enter class code: ";
+                cout << "Enter course code: ";
                 cin >> code;
             } break;
             case 3: {
                 cout << "Enter the year: ";
                 cin >> year;
+                students = consult.findYearStudents(year);
             } break;
             default: cout << "Invalid option, please try again: ";
         }
@@ -192,6 +208,10 @@ void Menu::viewStudentsCCY() {
     cout << "\n************************************************************" << endl;
     cout << "   list of students" << endl;
     cout << endl;
+
+    for(const auto& s: students)
+            cout << "\t" << s.getStudentCode() << " \t" << s.getStudentName() << endl;
+
     cout << endl;
     cout << "                                                   0) BACK  " << endl;
     cout << "************************************************************" << endl;
@@ -210,7 +230,7 @@ void Menu::viewNumStudents() {
 }
 
 void Menu::viewCYUoccupation() {
-    int occupation = 0;
+    unsigned long occupation = -1;
     string code;
     int year;
     cout << "Choose one:" << endl;
@@ -225,28 +245,38 @@ void Menu::viewCYUoccupation() {
             case 1: {
                 cout << "Enter class code: ";
                 cin >> code;
+                occupation = consult.findClassOccupation(code);
+                cout << "\nCLASS " << code << ", " << "OCCUPATION = " << occupation << endl;
             } break;
             case 2: {
                 cout << "Enter the year: ";
                 cin >> year;
+                occupation = consult.findYearOccupation(year);
+                cout << "\nYEAR " << year << ", " << "OCCUPATION = " << occupation << endl;
             } break;
             case 3: {
                 cout << "Enter UC code: ";
                 cin >> code;
+                occupation = consult.findUCOccupation(code);
+                cout << "\nUC " << code << ", " << "OCCUPATION = " << occupation << endl;
             } break;
             default: cout << "Invalid option, please try again: ";
         }
     } while(option != 1 && option != 2 && option != 3);
 
-    cout << "\nOCCUPATION = " << occupation << endl;
-    cout << "0) BACK" << endl;
+    cout << "0) Back" << endl;
     goToMenu();
 }
 
 void Menu::viewUCgreatest() {
+    vector<pair<string, int>> ucs = consult.findGreatestUCs();
     cout << "n************************************************************" << endl;
     cout << "   ucs with the greatest number of students" << endl;
     cout << endl;
+
+    for(int i = 0; i < 5; i++) 
+        cout << "\t" << ucs[i].first << ": " << ucs[i].second << endl;
+
     cout << endl;
     cout << "                                                   0) BACK  " << endl;
     cout << "************************************************************" << endl;

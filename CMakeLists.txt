@@ -18,4 +18,6 @@ add_executable(AED2324_PRJ1_G56
         src/main.cpp
         src/Menu.cpp
         src/Menu.h
+        src/Consult.cpp
+        src/Consult.h
 )
