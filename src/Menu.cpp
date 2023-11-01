@@ -224,7 +224,7 @@ void Menu::viewNumStudents() {
     int n;
     cin >> n;
     int numStudents = consult.studentsRegisteredUcs(n);
-    cout << "Number of students enrolled in at least " << n << "UCs: " << numStudents << endl;
+    cout << "Number of students enrolled in at least " << n << " UCs: " << numStudents << endl;
     cout << "0) BACK" << endl;
     goToMenu();
 }
