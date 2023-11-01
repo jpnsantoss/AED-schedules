@@ -115,3 +115,10 @@ void Dataset::readStudents() {
     students.insert(currentStudent);
     UcClass::capacity = maxCapacity;
 }
+
+void Dataset::handleRequests() {
+    for(int i = 0; i < requests.size(); i++) {
+        requests.front().process(ucClasses);
+        requests.pop();
+    }
+}

@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <map>
+#include <vector>
 #include "UcClass.h"
 #include "Student.h"
 
@@ -36,31 +37,15 @@ public:
     //add/remove a class to a student
     Request(requestType type, Student* student, UcClass* ucClass);
 
-/*
-     check request type
-     remove:
-        checkBalance
-     add:
-        check if student already has that uc
-        check if the student has less than 7 ucs
-        check classes for that uc with slots available
-        for each class:
-            checkBalance
-            checkConflict
-    switch:
-        check if olduc == newUc
-        checkCapacity
-        checkBalance
-        checkConflict
-*/
-
-    bool process();
-
-    bool checkBalance();
+    bool process(vector<UcClass>& ucClasses);
 
     bool ucAlreadyExits();
 
     bool checkConflict();
+
+    bool checkBalance(const vector<UcClass> &ucClasses);
+
+    //void addToHistory();
 };
 
 

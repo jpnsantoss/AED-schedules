@@ -3,6 +3,7 @@
 //
 
 #include "Consult.h"
+#include <algorithm>
 
 Consult::Consult() {}
 
@@ -81,11 +82,19 @@ set<Student> Consult::findClassStudents(string& code) {
     return result;
 }
 
-set<Student> Consult::findCourseStudent() {
+set<Student> Consult::findUcStudents(string& code) {
     set<Student> result;
 
+    for (char& c: code)
+        c = (char)toupper(c);
 
-
+    for(const auto& s : data.getStudents()) {
+        for(const auto& uc : s.getUcClasses()) {
+            string ucCode = uc.getUcClassCodes().first;
+            if(code == ucCode)
+                result.insert(s);
+        }
+    }
     return result;
 }
 
@@ -97,6 +106,18 @@ set<Student> Consult::findYearStudents(int year) {
             string str = uc.getUcClassCodes().second.substr(0, 1);
             if(to_string(year) == str)
                 result.insert(s);
+        }
+    }
+
+    return result;
+}
+
+int Consult::studentsRegisteredUcs(int n) {
+    int result;
+
+    for(const auto& s : data.getStudents()) {
+        if (s.getUcClasses().size() >= n) {
+            result++;
         }
     }
 

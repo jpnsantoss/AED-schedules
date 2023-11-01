@@ -204,6 +204,7 @@ void Menu::viewStudentsCCY() {
             case 2: {
                 cout << "Enter course code: ";
                 cin >> code;
+                students = consult.findUcStudents(code);
             } break;
             case 3: {
                 cout << "Enter the year: ";

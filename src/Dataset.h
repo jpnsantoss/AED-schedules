@@ -32,6 +32,16 @@ public:
     const std::vector<UcClass>& getUcClasses() const;
     const std::queue<Request>& getRequests() const;
     const std::queue<Request>& getHistory() const;
+
+    void handleRequests();
+    /* TODO:
+     void handleRequests();
+    void pushRequestToQueue(Request request);
+    queue<Request> getMainRequest() const;
+    queue<Request> getArchiveRequest() const;
+
+     also missing archive feature, do that and go to sleep :)
+     */
 };
 
 
