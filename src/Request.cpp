@@ -110,6 +110,8 @@ bool Request::process(vector<UcClass>& ucClasses) {
             this->student->addUcClass(*finalUcClass);
             this->finalUcClass->setStudentsNumber(finalUcClass->getStudentsNumber() + 1);
             return true;
+        default:
+            return false;
     }
 }
 
@@ -140,7 +142,7 @@ bool Request::ucAlreadyExits() {
         if(ucClass.getUcClassCodes().first == finalUcClass->getUcClassCodes().first) {
             return true;
         }
-        return false;
     }
+    return false;
 }
 
