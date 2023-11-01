@@ -116,7 +116,7 @@ bool Request::process(vector<UcClass>& ucClasses) {
 }
 
 bool Request::checkBalance(const vector<UcClass>& ucClasses) {
-        int min = INT32_MAX;
+        int min = ucClasses[0].getStudentsNumber();
         for (const UcClass& ucClass: ucClasses) {
 
             if(ucClass.getUcClassCodes().first == finalUcClass->getUcClassCodes().first) {

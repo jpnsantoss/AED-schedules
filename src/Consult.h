@@ -24,11 +24,13 @@ class Consult {
 public:
     Consult();
     Consult(const Dataset &dataset);
+    const vector<Student>& getStudentList(const Dataset& dataset);
     list<Schedule> findStudentSchedule(const string& code);
     list<Schedule> findClassSchedule(string& code);
     set<Student> findClassStudents(string& code);
-    set<Student> findCourseStudent();
+    set<Student> findUcStudents(string& code);
     set<Student> findYearStudents(int year);
+    int studentsRegisteredUcs(int n);
     unsigned long findClassOccupation(string& code);
     unsigned long findYearOccupation(int year);
     unsigned long findUCOccupation(string& code);

@@ -195,6 +195,7 @@ void Menu::viewStudentsCCY() {
             case 2: {
                 cout << "Enter course code: ";
                 cin >> code;
+                students = consult.findUcStudents(code);
             } break;
             case 3: {
                 cout << "Enter the year: ";
@@ -219,12 +220,11 @@ void Menu::viewStudentsCCY() {
 }
 
 void Menu::viewNumStudents() {
-    cout << "Enter number of UCs: ";
-    int ucs;
-    cin >> ucs;
-
-    int num = 0;
-    cout << "\nNUMBER OF STUDENTS REGISTERED IN AT LEAST " << ucs << " UCs = " << num << endl;
+    cout << "Enter the minimum number of UCs: ";
+    int n;
+    cin >> n;
+    int numStudents = consult.studentsRegisteredUcs(n);
+    cout << "Number of students enrolled in at least " << n << "UCs: " << numStudents << endl;
     cout << "0) BACK" << endl;
     goToMenu();
 }
