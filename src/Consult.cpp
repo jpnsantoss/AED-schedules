@@ -15,7 +15,7 @@ list<Schedule> Consult::findStudentSchedule(const string& code) {
     list<Schedule> schedule;
     list<UcClass> ucs;
 
-    for(const auto& s : data.getStudents()) {
+    for(const Student& s : data.getStudents()) {
         if(code == s.getStudentCode()) {
             ucs = s.getUcClasses();
             break;
@@ -23,7 +23,7 @@ list<Schedule> Consult::findStudentSchedule(const string& code) {
     }
 
     for(const auto& u: ucs) {
-        for(const auto& l: u.getLessons()) {
+        for(const Lesson& l: u.getLessons()) {
             Schedule s;
             s.ucCode = u.getUcClassCodes().first;
             s.classCode = u.getUcClassCodes().second;
@@ -46,7 +46,7 @@ list<Schedule> Consult::findClassSchedule(string& code) {
     for (char& c: code)
         c = (char)toupper(c);
 
-    for(const auto& uc: data.getUcClasses()) {
+    for(const UcClass& uc: data.getUcClasses()) {
         if(code == uc.getUcClassCodes().second) {
             for(const auto& l: uc.getLessons()) {
                 Schedule s;
@@ -71,8 +71,8 @@ set<Student> Consult::findClassStudents(string& code) {
     for (char& c: code)
         c = (char)toupper(c);
 
-    for(const auto& s : data.getStudents()) {
-        for(const auto& uc : s.getUcClasses()) {
+    for(const Student& s : data.getStudents()) {
+        for(const UcClass& uc : s.getUcClasses()) {
             string classCode = uc.getUcClassCodes().second;
             if(code == classCode)
                 result.insert(s);
@@ -101,8 +101,8 @@ set<Student> Consult::findUcStudents(string& code) {
 set<Student> Consult::findYearStudents(int year) {
     set<Student> result;
 
-    for(const auto& s : data.getStudents()) {
-        for(const auto& uc : s.getUcClasses()) {
+    for(const Student& s : data.getStudents()) {
+        for(const UcClass& uc : s.getUcClasses()) {
             string str = uc.getUcClassCodes().second.substr(0, 1);
             if(to_string(year) == str)
                 result.insert(s);
@@ -130,8 +130,8 @@ unsigned long Consult::findClassOccupation(string& code) {
     for (char& c: code)
         c = (char)toupper(c);
 
-    for(const auto& s : data.getStudents()) {
-        for(const auto& uc : s.getUcClasses()) {
+    for(const Student& s : data.getStudents()) {
+        for(const UcClass& uc : s.getUcClasses()) {
             string classCode = uc.getUcClassCodes().second;
             if(code == classCode)
                 result.insert(s);
@@ -144,8 +144,8 @@ unsigned long Consult::findClassOccupation(string& code) {
 unsigned long Consult::findYearOccupation(int year) {
     set<Student> result;
 
-    for(const auto& s : data.getStudents()) {
-        for(const auto& uc : s.getUcClasses()) {
+    for(const Student& s : data.getStudents()) {
+        for(const UcClass& uc : s.getUcClasses()) {
             string str = uc.getUcClassCodes().second.substr(0, 1);
             if(to_string(year) == str)
                 result.insert(s);
@@ -161,8 +161,8 @@ unsigned long Consult::findUCOccupation(string& code) {
     for (char& c: code)
         c = (char)toupper(c);
 
-    for(const auto& s : data.getStudents()) {
-        for(const auto& uc : s.getUcClasses()) {
+    for(const Student& s : data.getStudents()) {
+        for(const UcClass& uc : s.getUcClasses()) {
             string ucCode = uc.getUcClassCodes().first;
             if(code == ucCode)
                 result.insert(s);
@@ -175,8 +175,8 @@ unsigned long Consult::findUCOccupation(string& code) {
 vector<pair<string, int>> Consult::findGreatestUCs() {
     std::map<std::string, unsigned long> ucOccupations;
 
-    for (const auto& s : data.getStudents()) {
-        for (const auto& uc : s.getUcClasses()) {
+    for (const Student& s : data.getStudents()) {
+        for (const UcClass& uc : s.getUcClasses()) {
             string ucCode = uc.getUcClassCodes().first;
             ucOccupations[ucCode]++;
         }
@@ -189,6 +189,44 @@ vector<pair<string, int>> Consult::findGreatestUCs() {
     });
 
     return result;
+}
+
+vector<UcClass> Consult::listOfClasses(string &code) {
+    set<UcClass> ucClass;
+
+    for (char& c: code)
+        c = (char)toupper(c);
+
+    for(const UcClass& uc: data.getUcClasses()) {
+        if(code == uc.getUcClassCodes().first)
+            ucClass.insert(uc);
+    }
+
+    vector<UcClass> classes(ucClass.begin(), ucClass.end());
+
+    return classes;
+}
+
+bool Consult::findStudent(std::string &code) {
+    for (char& c: code)
+        c = (char)toupper(c);
+
+    for(const Student& s: data.getStudents()) {
+        if(code == s.getStudentCode())
+            return true;
+    }
+    return false;
+}
+
+bool Consult::findUc(std::string &code) {
+    for (char& c: code)
+        c = (char)toupper(c);
+
+    for(const UcClass& uc: data.getUcClasses()) {
+        if(code == uc.getUcClassCodes().first)
+            return true;
+    }
+    return false;
 }
 
 list<Schedule> Consult::orderSchedule(list<Schedule> schedule) {

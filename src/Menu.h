@@ -20,7 +20,6 @@ private:
     Consult consult;
     void information();
     void registration();
-    void records();
     void viewSchedule();
     void viewStudentSchedule();
     void viewClassSchedule();
@@ -29,12 +28,11 @@ private:
     void viewCYUoccupation();
     void viewUCgreatest();
     void menuRegUC();
-    void menuRegClass();
     void menuRemoveUC();
-    void menuRemoveClass();
-    void menuSwitchUC();
     void menuSwitchClass();
-    void goToMenu();
+    void undo();
+    void goToInformationMenu();
+    void goToRegistrationMenu();
 };
 
 
