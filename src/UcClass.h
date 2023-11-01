@@ -39,6 +39,8 @@ public:
     const list<Lesson>& getLessons() const;
 
     bool operator==(const UcClass& other) const;
+
+    bool operator<(const UcClass &other) const;
 };
 
 

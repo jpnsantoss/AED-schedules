@@ -32,7 +32,10 @@ public:
     unsigned long findClassOccupation(string& code);
     unsigned long findYearOccupation(int year);
     unsigned long findUCOccupation(string& code);
+    vector<UcClass> listOfClasses(string& code);
     vector<pair<string, int>> findGreatestUCs();
+    bool findStudent(string& code);
+    bool findUc(string& code);
 private:
     Dataset data;
     static list<Schedule> orderSchedule(list<Schedule> schedule);

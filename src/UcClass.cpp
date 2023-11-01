@@ -44,4 +44,6 @@ bool UcClass::operator==(const UcClass &other) const {
     return (ucCode == other.ucCode) && (classCode == other.classCode);
 }
 
-
+bool UcClass::operator<(const UcClass &other) const {
+    return classCode < other.classCode;
+}
