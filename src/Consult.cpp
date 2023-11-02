@@ -40,7 +40,7 @@ list<Schedule> Consult::findStudentSchedule(const string& code) {
         }
     }
 
-    for(const UcClass& u: ucs) {
+    for(const auto& u: ucs) {
         for(const Lesson& l: u.getLessons()) {
             Schedule s;
             s.ucCode = u.getUcClassCodes().first;
@@ -74,7 +74,7 @@ list<Schedule> Consult::findClassSchedule(string& code) {
 
     for(const UcClass& uc: data.getUcClasses()) {
         if(code == uc.getUcClassCodes().second) {
-            for(const Lesson& l: uc.getLessons()) {
+            for(const auto& l: uc.getLessons()) {
                 Schedule s;
                 s.ucCode = uc.getUcClassCodes().first;
                 s.classCode = uc.getUcClassCodes().second;
@@ -274,11 +274,49 @@ vector<pair<string, int>> Consult::findGreatestUCs() {
 
     vector<pair<string, int>> result(ucOccupations.begin(), ucOccupations.end());
 
-    sort(result.begin(), result.end(), [](const pair<string,int>& map1, const pair<string,int>& map2) {
+    sort(result.begin(), result.end(), [](const auto& map1, const auto& map2) {
         return map2.second < map1.second;
     });
 
     return result;
+}
+
+vector<UcClass> Consult::listOfClasses(string &code) {
+    set<UcClass> ucClass;
+
+    for (char& c: code)
+        c = (char)toupper(c);
+
+    for(const UcClass& uc: data.getUcClasses()) {
+        if(code == uc.getUcClassCodes().first)
+            ucClass.insert(uc);
+    }
+
+    vector<UcClass> classes(ucClass.begin(), ucClass.end());
+
+    return classes;
+}
+
+Student * Consult::findStudent(std::string &code) {
+    for (char& c: code)
+        c = (char)toupper(c);
+
+    for(const Student& s: data.getStudents()) {
+        if(code == s.getStudentCode())
+            return const_cast<Student *>(&s);
+    }
+    return nullptr;
+}
+
+UcClass * Consult::findUc(std::string &code) {
+    for (char& c: code)
+        c = (char)toupper(c);
+
+    for(const UcClass& uc: data.getUcClasses()) {
+        if(code == uc.getUcClassCodes().first)
+            return const_cast<UcClass *>(&uc);
+    }
+    return nullptr;
 }
 
 /**
