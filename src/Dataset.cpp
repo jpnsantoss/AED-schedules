@@ -105,7 +105,7 @@ void Dataset::readStudents() {
 
         for (UcClass& ucClass : ucClasses) {
             if (ucClass.getUcClassCodes() == make_pair(ucCode, classCode)) {
-                ucClass.setStudentsNumber(ucClass.getStudentsNumber());
+                ucClass.setStudentsNumber(ucClass.getStudentsNumber() + 1);
                 if(ucClass.getStudentsNumber()>maxCapacity) maxCapacity=ucClass.getStudentsNumber();
                 currentStudent.addUcClass(ucClass);
             }
@@ -121,4 +121,8 @@ void Dataset::handleRequests() {
         requests.front().process(ucClasses);
         requests.pop();
     }
+}
+
+void Dataset::addRequest(const Request &request) {
+    requests.push(request);
 }

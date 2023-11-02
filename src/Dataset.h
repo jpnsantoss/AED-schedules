@@ -32,7 +32,7 @@ public:
     const std::vector<UcClass>& getUcClasses() const;
     const std::queue<Request>& getRequests() const;
     const std::queue<Request>& getHistory() const;
-
+    void addRequest(const Request& request);
     void handleRequests();
     /* TODO:
      void handleRequests();

@@ -207,26 +207,26 @@ vector<UcClass> Consult::listOfClasses(string &code) {
     return classes;
 }
 
-bool Consult::findStudent(std::string &code) {
+Student * Consult::findStudent(std::string &code) {
     for (char& c: code)
         c = (char)toupper(c);
 
     for(const Student& s: data.getStudents()) {
         if(code == s.getStudentCode())
-            return true;
+            return const_cast<Student *>(&s);
     }
-    return false;
+    return nullptr;
 }
 
-bool Consult::findUc(std::string &code) {
+UcClass * Consult::findUc(std::string &code) {
     for (char& c: code)
         c = (char)toupper(c);
 
     for(const UcClass& uc: data.getUcClasses()) {
         if(code == uc.getUcClassCodes().first)
-            return true;
+            return const_cast<UcClass *>(&uc);
     }
-    return false;
+    return nullptr;
 }
 
 list<Schedule> Consult::orderSchedule(list<Schedule> schedule) {
