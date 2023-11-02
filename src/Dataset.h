@@ -24,6 +24,7 @@ private:
     void readUcClasses();
     void readLessons();
     void readStudents();
+    void readHistory();
 public:
     Dataset();
 
@@ -34,14 +35,7 @@ public:
     const std::queue<Request>& getHistory() const;
     void addRequest(const Request& request);
     void handleRequests();
-    /* TODO:
-     void handleRequests();
-    void pushRequestToQueue(Request request);
-    queue<Request> getMainRequest() const;
-    queue<Request> getArchiveRequest() const;
-
-     also missing archive feature, do that and go to sleep :)
-     */
+    void updateHistory();
 };
 
 

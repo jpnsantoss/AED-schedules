@@ -37,6 +37,19 @@ public:
     //add/remove a class to a student
     Request(requestType type, Student* student, UcClass* ucClass);
 
+    // Getter for requestType
+    requestType getType() const;
+
+    // Getter for Student pointer
+    Student* getStudent() const;
+
+    // Getter for initialUcClass pointer
+    UcClass* getInitialUcClass() const;
+
+    // Getter for finalUcClass pointer
+    UcClass* getFinalUcClass() const;
+
+
     bool process(vector<UcClass>& ucClasses);
 
     bool ucAlreadyExits();
@@ -44,6 +57,10 @@ public:
     bool checkConflict();
 
     bool checkBalance(const vector<UcClass> &ucClasses);
+
+    string getTypeToString();
+
+    static requestType stringToRequestType(const std::string& typeStr);
 
     //void addToHistory();
 };
