@@ -109,6 +109,7 @@ bool Request::process(vector<UcClass>& ucClasses) {
             }
             this->student->addUcClass(*finalUcClass);
             this->finalUcClass->setStudentsNumber(finalUcClass->getStudentsNumber() + 1);
+            cout << "Request executed sucessfully." << endl;
             return true;
         default:
             return false;
@@ -144,5 +145,44 @@ bool Request::ucAlreadyExits() {
         }
     }
     return false;
+}
+
+requestType Request::getType() const {
+    return type;
+}
+
+Student *Request::getStudent() const  {
+    return student;
+}
+
+UcClass *Request::getInitialUcClass() const {
+        return initialUcClass;
+}
+
+UcClass *Request::getFinalUcClass() const {
+    return finalUcClass;
+}
+
+string Request::getTypeToString() {
+    switch (type) {
+        case requestType::Add:
+            return "Add";
+        case requestType::Remove:
+            return "Remove";
+        case requestType::Switch:
+            return "Switch";
+        default:
+            return "Unknown";
+    }
+}
+
+requestType Request::stringToRequestType(const string &typeStr) {
+    if (typeStr == "Add") {
+        return requestType::Add;
+    } else if (typeStr == "Remove") {
+        return requestType::Remove;
+    } else {
+        return requestType::Switch;
+    }
 }
 

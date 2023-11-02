@@ -352,12 +352,13 @@ void Menu::menuRegUC() {
         if(option > 0 && option < classes.size()) {
         data.addRequest(Request(requestType::Add, student, &classes[option-1]));
         data.handleRequests();
+
         }
     } else {
       cout << "Result not found!\n"
            << "0) Back" << endl;
     }
-    //goToRegistrationMenu();
+    registration();
 }
 
 /**
@@ -371,15 +372,23 @@ void Menu::menuRemoveUC() {
     cin >> studentCode;
     cout << "UC code: ";
     cin >> ucCode;
-    if(consult.findStudent(studentCode) && consult.findUc(ucCode)) {
-        // Chama a funcao que remove o registro na uc
-        // tem os valores studentCode e ucCode
+    Student* student = consult.findStudent(studentCode);
+    if(student) {
+        UcClass* initialUcClass;
+        for(UcClass ucClass: student->getUcClasses()) {
+            if(ucCode == ucClass.getUcClassCodes().first) {
+                initialUcClass = &ucClass;
+            }
+        }
+
+        data.addRequest(Request(requestType::Remove, student, initialUcClass));
+        data.handleRequests();
 
     } else {
         cout << "Result not found!\n"
              << "0) Back" << endl;
     }
-    goToRegistrationMenu();
+    registration();
 }
 
 /**
@@ -395,33 +404,41 @@ void Menu::menuSwitchClass() {
 
     cout << "UC code: ";
     cin >> ucCode;
-
-    if(consult.findStudent(studentCode) && consult.findUc(ucCode)) {
+    Student* student = consult.findStudent(studentCode);
+    if(student) {
         vector<UcClass> classes = consult.listOfClasses(ucCode);
+        UcClass* initialUcClass;
+        for(UcClass ucClass: student->getUcClasses()) {
+            if(ucCode == ucClass.getUcClassCodes().first) {
+                initialUcClass = &ucClass;
+            }
+        }
 
         cout << "\n*************************************************\n"
              << "   choose class\n\n";
 
         for (int i = 0; i < classes.size(); i++) {
             cout << " " << i+1 << "- " << classes[i].getUcClassCodes().second << " " << classes[i].getStudentsNumber()
-                 << "/" << classes[i].getCapacity() << "\n";
+                 << "/" << UcClass::capacity << "\n";
         }
 
         cout << "\n                                         0) BACK"
              << "\n*************************************************\n"
              << "option: ";
         cin >> option;
-
         if(option == 0)
             registration();
 
-        // Chama a funcao que faz a troca de turmas
-        // tem os valores studentCode, ucCode e option (classCode, classes[i-1])
+        if(option > 0 && option < classes.size()) {
+            data.addRequest(Request(requestType::Switch, student, initialUcClass, &classes[option - 1]));
+            data.handleRequests();
+
+        }
     } else {
         cout << "Result not found!\n"
              << "0) Back" << endl;
     }
-    goToRegistrationMenu();
+    registration();
 }
 
 /**
