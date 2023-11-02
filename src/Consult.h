@@ -1,6 +1,7 @@
-//
-// Created by Maureen Ah-shu🍩 on 29/10/2023.
-//
+/**
+*@file Consult.h
+*Funções que organizam os dados, de modo a consultá-los.
+**/
 
 #ifndef AED2324_PRJ1_G56_CONSULT_H
 #define AED2324_PRJ1_G56_CONSULT_H
