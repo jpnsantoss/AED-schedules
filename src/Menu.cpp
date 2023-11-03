@@ -43,7 +43,7 @@ void Menu::information() {
          << "*     5) UCs WITH THE GREATEST NUMBER OF STUDENTS          *\n"
          << "*                                                          *\n"
          << "*                                                 0) BACK  *\n"
-         << "******************************************+*****************\n"
+         << "************************************************************\n"
          << "Option: " << std::endl;
     int option;
     do{
