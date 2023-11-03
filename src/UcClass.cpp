@@ -7,6 +7,8 @@
 #include <utility>
 int UcClass::capacity = 0;
 
+UcClass::UcClass() {}
+
 UcClass::UcClass(string ucCode, string classCode) {
     this->ucCode = std::move(ucCode);
     this->classCode = std::move(classCode);
@@ -48,3 +50,4 @@ bool UcClass::operator==(const UcClass &other) const {
 bool UcClass::operator<(const UcClass &other) const {
     return classCode < other.classCode;
 }
+

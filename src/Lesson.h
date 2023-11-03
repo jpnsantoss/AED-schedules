@@ -8,7 +8,7 @@
 #include <string>
 
 using namespace std;
-
+#include <iostream>
 class Lesson {
 private:
     double start;

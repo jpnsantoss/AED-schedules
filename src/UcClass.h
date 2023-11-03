@@ -20,7 +20,7 @@ private:
 
 public:
     static int capacity;
-
+    UcClass();
     UcClass(string ucCode, string classCode);
     pair<string, string> getUcClassCodes() const;
     void addLessons(const list<Lesson>& newLessons);

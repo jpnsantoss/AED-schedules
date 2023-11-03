@@ -36,6 +36,9 @@ public:
     void addRequest(const Request& request);
     void handleRequests();
     void updateHistory();
+    void undoRequest();
+
+    void reset();
 };
 
 

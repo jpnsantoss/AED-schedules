@@ -86,7 +86,7 @@ void Menu::registration() {
             case 1: menuRegUC(); break;
             case 2: menuRemoveUC(); break;
             case 3: menuSwitchClass(); break;
-            case 4: undo(); break;
+            case 4: data.undoRequest(); break;
             case 0: main(); break;
             default: cout << "Invalid option, please try again: ";
         }
@@ -439,14 +439,6 @@ void Menu::menuSwitchClass() {
              << "0) Back" << endl;
     }
     registration();
-}
-
-/**
- * Undo the last modification.
- * Complexity: .
- */
-void Menu::undo() {
-
 }
 
 /**

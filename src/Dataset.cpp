@@ -121,28 +121,29 @@ void Dataset::readStudents() {
 }
 
 void Dataset::handleRequests() {
-    for(int i = 0; i < requests.size(); i++) {
+    while(!requests.empty()) {
         Request request = requests.front();
         if(request.process(ucClasses)) {
                history.push(request);
         }
+
         requests.pop();
     }
     updateHistory();
 }
 
 void Dataset::updateHistory() {
-    ofstream file("files/history.csv");
-    while(!history.empty()){
+    ofstream file("files/history.csv", ios::app);
+
+    while (!history.empty()) {
         Request request = history.front();
         history.pop();
         file << request.getTypeToString() << ",";
-        file << request.getStudent()->getStudentCode()<<",";
-        if(request.getType() == requestType::Add) {
+        file << request.getStudent()->getStudentCode() << ",";
+        if (request.getType() == requestType::Add) {
             file << request.getFinalUcClass()->getUcClassCodes().first << ","
                  << request.getFinalUcClass()->getUcClassCodes().second;
-        }
-        else if(request.getType() == requestType::Remove) {
+        } else if (request.getType() == requestType::Remove) {
             file << request.getInitialUcClass()->getUcClassCodes().first << ","
                  << request.getInitialUcClass()->getUcClassCodes().second;
         } else {
@@ -152,10 +153,11 @@ void Dataset::updateHistory() {
                  << request.getFinalUcClass()->getUcClassCodes().second;
         }
 
-        file<<endl;
+        file << endl;
     }
     file.close();
 }
+
 
 void Dataset::addRequest(const Request &request) {
     requests.push(request);
@@ -169,16 +171,15 @@ void Dataset::readHistory() {
     }
 
     string row, strType, studentCode;
-    Student* student;
-    getline(file, row);
+    Student student;
 
     while (getline(file, row)) {
         istringstream line(row);
         getline(line, strType, ',');
         getline(line, studentCode, ',');
-        for(Student s: students) {
+        for(const Student& s: students) {
             if(s.getStudentCode() == studentCode) {
-                student = &s;
+                student = s;
             }
         }
         requestType type = Request::stringToRequestType(strType);
@@ -188,30 +189,65 @@ void Dataset::readHistory() {
             getline(line, initialClassStr, ',');
             getline(line, finalUcStr, ',');
             getline(line, finalClassStr, ',');
-            UcClass* initialUcClass;
-            UcClass* finalUcClass;
-            for(UcClass ucClass: ucClasses) {
+            UcClass initialUcClass;
+            UcClass finalUcClass;
+            for(const UcClass& ucClass: ucClasses) {
                 if(ucClass.getUcClassCodes().first == initialUcStr && ucClass.getUcClassCodes().second == initialClassStr) {
-                    initialUcClass = &ucClass;
+                    initialUcClass = ucClass;
                 } else if(ucClass.getUcClassCodes().first == finalUcStr && ucClass.getUcClassCodes().second == finalClassStr) {
-                    finalUcClass = &ucClass;
+                    finalUcClass = ucClass;
                 }
             }
-            history.emplace(type, student, initialUcClass, finalUcClass);
+            Request request(type, &student, &initialUcClass, &finalUcClass);
+            requests.push(request);
 
         } else {
             string ucStr, classStr;
             getline(line, ucStr, ',');
             getline(line, classStr, ',');
-            UcClass* requestUcClass;
-            for(UcClass ucClass: ucClasses) {
+            UcClass requestUcClass;
+            for(const UcClass& ucClass: ucClasses) {
                 if(ucClass.getUcClassCodes().first == ucStr && ucClass.getUcClassCodes().second == classStr) {
-                    requestUcClass = &ucClass;
+                    requestUcClass = ucClass;
                 }
             }
-            history.emplace(type, student, requestUcClass);
+            Request request(type, &student, &requestUcClass);
+            requests.push(request);
         }
     }
-    updateHistory();
+    handleRequests();
     file.close();
+}
+
+void Dataset::undoRequest() {
+    string line;
+    vector<string> lines;
+    ifstream infile("files/history.txt");
+
+    while (getline(infile,line)) {
+        lines.push_back(line);
+    }
+    infile.close();
+
+    ofstream outfile("files/history.txt");
+    if (outfile.is_open())
+    {
+        for (int i=0; i < lines.size()-2; i++)
+        {
+            outfile << lines[i] << "\n";
+        }
+        outfile.close();
+    }
+    reset();
+}
+
+void Dataset::reset() {
+    students.clear();
+    ucClasses.clear();
+    while(!requests.empty()) requests.pop();
+    while(!history.empty()) history.pop();
+    readUcClasses();
+    readLessons();
+    readStudents();
+    readHistory();
 }

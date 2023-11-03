@@ -34,6 +34,7 @@ std::string Student::getStudentName() const {
 
 // Setter and Getter methods for ucClasses
 void Student::addUcClass(const UcClass& ucClass) {
+
     ucClasses.push_back(ucClass);
 }
 

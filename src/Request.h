@@ -49,9 +49,6 @@ public:
     // Getter for finalUcClass pointer
     UcClass* getFinalUcClass() const;
 
-
-    bool process(vector<UcClass>& ucClasses);
-
     bool ucAlreadyExits();
 
     bool checkConflict();
@@ -62,7 +59,7 @@ public:
 
     static requestType stringToRequestType(const std::string& typeStr);
 
-    //void addToHistory();
+    bool process(const vector<UcClass>& ucClasses);
 };
 
 
