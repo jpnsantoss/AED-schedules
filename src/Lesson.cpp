@@ -1,6 +1,3 @@
-//
-// Created by jpsantos on 25-10-2023.
-//
 
 #include "Lesson.h"
 
@@ -13,7 +10,7 @@
  * @param duration
  * @param type
  */
-Lesson::Lesson(string weekDay, double start, double duration, string type)
+Lesson::Lesson(std::string weekDay, double start, double duration, std::string type)
         : start(start), end(start + duration), type(std::move(type)), weekday(std::move(weekDay)) {}
 
 /**

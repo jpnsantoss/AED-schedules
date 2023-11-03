@@ -1,6 +1,3 @@
-//
-// Created by jpsantos on 25-10-2023.
-//
 
 #ifndef AED2324_PRJ1_G56_STUDENT_H
 #define AED2324_PRJ1_G56_STUDENT_H
@@ -9,21 +6,19 @@
 #include <list>
 #include "UcClass.h"
 
-using namespace std;
-
 class Student {
 private:
-    string studentCode;
-    string studentName;
+    std::string studentCode;
+    std::string studentName;
     list<UcClass> ucClasses;
 
 public:
     Student();
-    Student(string studentCode, string studentName);
-    void setStudentCode(const string& code);
-    string getStudentCode() const;
-    void setStudentName(const string& name);
-    string getStudentName() const;
+    Student(std::string studentCode, std::string studentName);
+    void setStudentCode(const std::string& code);
+    std::string getStudentCode() const;
+    void setStudentName(const std::string& name);
+    std::string getStudentName() const;
     void addUcClass(const UcClass& ucClass);
     const list<UcClass>& getUcClasses() const;
     bool operator<(const Student &other) const;

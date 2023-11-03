@@ -1,6 +1,3 @@
-//
-// Created by jpsantos on 25-10-2023.
-//
 
 #include "Student.h"
 
@@ -18,7 +15,7 @@ Student::Student() {}
  * @param studentCode
  * @param studentName
  */
-Student::Student(string  studentCode, string  studentName)
+Student::Student(std::string  studentCode, std::string  studentName)
         : studentCode(std::move(studentCode)), studentName(std::move(studentName)) {
 }
 
@@ -34,7 +31,7 @@ void Student::setStudentCode(const std::string& code) {
  * @brief Getter for student code
  * @return studentCode
  */
-string Student::getStudentCode() const {
+std::string Student::getStudentCode() const {
     return studentCode;
 }
 
@@ -49,7 +46,7 @@ void Student::setStudentName(const std::string& name) {
  * @brief Getter for student name
  * @return
  */
-string Student::getStudentName() const {
+std::string Student::getStudentName() const {
     return studentName;
 }
 
@@ -101,8 +98,8 @@ void Student::removeUcClass(const UcClass& ucClass) {
  * @brief Getter for the lessons the student has
  * @return list of Lessons
  */
-list<Lesson> Student::getLessons() const {
-    list<Lesson> allLessons;
+std::list<Lesson> Student::getLessons() const {
+    std::list<Lesson> allLessons;
     for (const UcClass& ucClass : ucClasses) {
         allLessons.insert(allLessons.end(), ucClass.getLessons().begin(), ucClass.getLessons().end());
     }

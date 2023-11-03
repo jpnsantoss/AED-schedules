@@ -1,6 +1,3 @@
-//
-// Created by jpsantos on 25-10-2023.
-//
 
 #ifndef AED2324_PRJ1_G56_UCCLASS_H
 #define AED2324_PRJ1_G56_UCCLASS_H
@@ -9,20 +6,18 @@
 #include <list>
 #include "Lesson.h"
 
-using namespace std;
-
 class UcClass {
 private:
-    string ucCode;
-    string classCode;
+    std::string ucCode;
+    std::string classCode;
     list<Lesson> lessons;
     int studentsNumber;
 
 public:
     static int capacity;
     UcClass();
-    UcClass(string ucCode, string classCode);
-    pair<string, string> getUcClassCodes() const;
+    UcClass(std::string ucCode, std::string classCode);
+    pair<std::string, std::string> getUcClassCodes() const;
     int getStudentsNumber() const;
     const list<Lesson>& getLessons() const;
     void setStudentsNumber(int number);
