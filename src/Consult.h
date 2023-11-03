@@ -6,6 +6,7 @@
 #include "Student.h"
 #include "UcClass.h"
 
+
 struct Schedule {
     std::string ucCode;
     std::string classCode;

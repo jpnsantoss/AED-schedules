@@ -35,6 +35,17 @@ public:
     std::string getTypeToString();
     static requestType stringToRequestType(const std::string& typeStr);
     bool process(std::set<Student>* students, const std::list<UcClass>& ucClasses);
+    Request& operator=(const Request& other) {
+        if (this != &other) {
+            type = other.type;
+            student = other.student;
+
+            // Crie cópias dos objetos UcClass
+            initialUcClass = other.initialUcClass;
+            finalUcClass = other.finalUcClass;
+        }
+        return *this;
+    }
 };
 
 

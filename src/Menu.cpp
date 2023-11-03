@@ -14,7 +14,6 @@ void Menu::main() {
          << "*     2) REGISTRATION                    *\n"
          << "*     0) EXIT                            *\n"
          << "*                                        *\n"
-         << "******************************************\n"
          << "Option: ";
     int option;
     do{
@@ -327,8 +326,8 @@ void Menu::menuRegUC() {
     std::cin >> studentCode;
     std::cout << "UC code: ";
     std::cin >> ucCode;
-    Student student = consult.findStudent(studentCode);
-    if(!student.getStudentCode().empty()) {
+    Student *student = consult.findStudent(studentCode);
+    if(!student->getStudentCode().empty()) {
         std::vector<UcClass> classes = consult.listOfClasses(ucCode);
 
         std::cout << "\n*************************************************\n"
@@ -347,7 +346,7 @@ void Menu::menuRegUC() {
             registration();
 
         if(option > 0 && option < classes.size()) {
-        data.addRequest(Request(requestType::Add, student, classes[option-1]));
+        data.addRequest(Request(requestType::Add, *student, classes[option-1]));
         data.handleRequests();
 
         }
@@ -369,16 +368,16 @@ void Menu::menuRemoveUC() {
     std::cin >> studentCode;
     std::cout << "UC code: ";
     std::cin >> ucCode;
-    Student student = consult.findStudent(studentCode);
-    if(!student.getStudentCode().empty()) {
+    Student *student = consult.findStudent(studentCode);
+    if(!student->getStudentCode().empty()) {
         UcClass initialUcClass;
-        for(const UcClass& ucClass: student.getUcClasses()) {
+        for(const UcClass& ucClass: student->getUcClasses()) {
             if(ucCode == ucClass.getUcClassCodes().first) {
                 initialUcClass = ucClass;
             }
         }
 
-        data.addRequest(Request(requestType::Remove, student, initialUcClass));
+        data.addRequest(Request(requestType::Remove, *student, initialUcClass));
         data.handleRequests();
 
     } else {
@@ -401,11 +400,11 @@ void Menu::menuSwitchClass() {
 
     std::cout << "UC code: ";
     std::cin >> ucCode;
-    Student student = consult.findStudent(studentCode);
-    if(!student.getStudentCode().empty()) {
+    Student *student = consult.findStudent(studentCode);
+    if(!student->getStudentCode().empty()) {
         std::vector<UcClass> classes = consult.listOfClasses(ucCode);
         UcClass initialUcClass;
-        for(const UcClass& ucClass: student.getUcClasses()) {
+        for(const UcClass& ucClass: student->getUcClasses()) {
             if(ucCode == ucClass.getUcClassCodes().first) {
                 initialUcClass = ucClass;
             }
@@ -427,7 +426,7 @@ void Menu::menuSwitchClass() {
             registration();
 
         if(option > 0 && option < classes.size()) {
-            data.addRequest(Request(requestType::Switch, student, initialUcClass, classes[option - 1]));
+            data.addRequest(Request(requestType::Switch, *student, initialUcClass, classes[option - 1]));
             data.handleRequests();
 
         }
