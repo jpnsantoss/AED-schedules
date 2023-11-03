@@ -284,6 +284,7 @@ vector<pair<string, int>> Consult::findGreatestUCs() {
 /**
 *@brief Obtém vetor com as turmas de uma determinada UC.
 Complexidade: O(n)
+@param code - código da UC.
 *@see UcClass
 *@return Vetor de objetos UcClass, que correspondem às turmas existentes de uma determinada UC.
 **/
@@ -307,6 +308,7 @@ vector<UcClass> Consult::listOfClasses(string &code) {
 /**
 *@brief Encontra um estudante através do seu código.
 Complexidade: O(n)
+*@param code - código do estudante.
 *@see Student
 *@return Um apontador para o objeto Student correspondente ao estudante em questão, ou nullptr, se não for encontrado.
 **/
@@ -325,6 +327,7 @@ Student * Consult::findStudent(std::string &code) {
 /**
 *@brief Encontra uma UC através do seu código.
 Complexidade: O(n)
+*@param code - código da UC.
 *@see UcClass
 *@return Um apontador para o objeto UcClass correspondente à UC em questão, ou nullptr, se não for encontrada.
 **/
