@@ -22,8 +22,7 @@ struct Schedule {
 
 class Consult {
 public:
-    Consult();
-    Consult(const Dataset &dataset);
+    Consult(Dataset& dataset) : data(dataset) {};
     const vector<Student>& getStudentList(const Dataset& dataset);
     list<Schedule> findStudentSchedule(const string& code);
     list<Schedule> findClassSchedule(string& code);
@@ -36,10 +35,9 @@ public:
     unsigned long findUCOccupation(string& code);
     vector<UcClass> listOfClasses(string& code);
     vector<pair<string, int>> findGreatestUCs();
-    Student * findStudent(string& code);
-    UcClass * findUc(string& code);
+    Student findStudent(string& code);
 private:
-    Dataset data;
+    Dataset& data;
     static list<Schedule> orderSchedule(list<Schedule> schedule);
 };
 

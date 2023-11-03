@@ -14,10 +14,10 @@ using namespace std;
 
 class Menu {
 public:
-    Menu(const Dataset &dataset) : consult(dataset), data(dataset) {}
+    Menu(Dataset& data) : data(data), consult(Consult(data)) {}
     void main();
 private:
-    Dataset data;
+    Dataset& data;
     Consult consult;
     void information();
     void registration();

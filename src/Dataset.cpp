@@ -123,13 +123,14 @@ void Dataset::readStudents() {
 void Dataset::handleRequests() {
     while(!requests.empty()) {
         Request request = requests.front();
-        if(request.process(ucClasses)) {
+        if(request.process(&students, ucClasses)) {
                history.push(request);
         }
 
         requests.pop();
     }
     updateHistory();
+    cout << "Request successful." << endl;
 }
 
 void Dataset::updateHistory() {
@@ -139,18 +140,18 @@ void Dataset::updateHistory() {
         Request request = history.front();
         history.pop();
         file << request.getTypeToString() << ",";
-        file << request.getStudent()->getStudentCode() << ",";
+        file << request.getStudent().getStudentCode() << ",";
         if (request.getType() == requestType::Add) {
-            file << request.getFinalUcClass()->getUcClassCodes().first << ","
-                 << request.getFinalUcClass()->getUcClassCodes().second;
+            file << request.getFinalUcClass().getUcClassCodes().first << ","
+                 << request.getFinalUcClass().getUcClassCodes().second;
         } else if (request.getType() == requestType::Remove) {
-            file << request.getInitialUcClass()->getUcClassCodes().first << ","
-                 << request.getInitialUcClass()->getUcClassCodes().second;
+            file << request.getInitialUcClass().getUcClassCodes().first << ","
+                 << request.getInitialUcClass().getUcClassCodes().second;
         } else {
-            file << request.getInitialUcClass()->getUcClassCodes().first << ","
-                 << request.getInitialUcClass()->getUcClassCodes().second << ","
-                 << request.getFinalUcClass()->getUcClassCodes().first << ","
-                 << request.getFinalUcClass()->getUcClassCodes().second;
+            file << request.getInitialUcClass().getUcClassCodes().first << ","
+                 << request.getInitialUcClass().getUcClassCodes().second << ","
+                 << request.getFinalUcClass().getUcClassCodes().first << ","
+                 << request.getFinalUcClass().getUcClassCodes().second;
         }
 
         file << endl;
@@ -171,24 +172,19 @@ void Dataset::readHistory() {
     }
 
     string row, strType, studentCode;
-    Student student;
 
     while (getline(file, row)) {
         istringstream line(row);
         getline(line, strType, ',');
         getline(line, studentCode, ',');
-        for(const Student& s: students) {
-            if(s.getStudentCode() == studentCode) {
-                student = s;
-            }
-        }
+        Student student = *(students.find(Student(studentCode, "Irrelevant")));
         requestType type = Request::stringToRequestType(strType);
         if(type == requestType::Switch) {
             string initialUcStr, initialClassStr, finalUcStr, finalClassStr;
             getline(line, initialUcStr, ',');
             getline(line, initialClassStr, ',');
             getline(line, finalUcStr, ',');
-            getline(line, finalClassStr, ',');
+            getline(line, finalClassStr, '\r');
             UcClass initialUcClass;
             UcClass finalUcClass;
             for(const UcClass& ucClass: ucClasses) {
@@ -198,41 +194,40 @@ void Dataset::readHistory() {
                     finalUcClass = ucClass;
                 }
             }
-            Request request(type, &student, &initialUcClass, &finalUcClass);
-            requests.push(request);
+            Request request(type, student, initialUcClass, finalUcClass);
+            request.process(&students, ucClasses);
 
         } else {
             string ucStr, classStr;
             getline(line, ucStr, ',');
-            getline(line, classStr, ',');
+            getline(line, classStr, '\r');
             UcClass requestUcClass;
             for(const UcClass& ucClass: ucClasses) {
                 if(ucClass.getUcClassCodes().first == ucStr && ucClass.getUcClassCodes().second == classStr) {
                     requestUcClass = ucClass;
                 }
             }
-            Request request(type, &student, &requestUcClass);
-            requests.push(request);
+            Request request(type, student, requestUcClass);
+            request.process(&students, ucClasses);
         }
     }
-    handleRequests();
     file.close();
 }
 
 void Dataset::undoRequest() {
     string line;
     vector<string> lines;
-    ifstream infile("files/history.txt");
+    ifstream infile("files/history.csv");
 
     while (getline(infile,line)) {
         lines.push_back(line);
     }
     infile.close();
 
-    ofstream outfile("files/history.txt");
+    ofstream outfile("files/history.csv");
     if (outfile.is_open())
     {
-        for (int i=0; i < lines.size()-2; i++)
+        for (int i=0; i < lines.size()-1; i++)
         {
             outfile << lines[i] << "\n";
         }

@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <map>
+#include <set>
 #include <vector>
 #include "UcClass.h"
 #include "Student.h"
@@ -23,31 +24,31 @@ enum requestType{
 class Request {
 private:
     requestType type;
-    Student* student;
-    UcClass* initialUcClass;
-    UcClass* finalUcClass;
+    Student student;
+    UcClass& initialUcClass;
+    UcClass& finalUcClass;
 public:
     // add uc/class
     // remove uc/class
     // switch class in some uc
 
     //swap a student from a class to another
-    Request(requestType type, Student* student, UcClass* initialUcClass, UcClass* finalUcClass);
+    Request(requestType type, Student student, UcClass& initialUcClass, UcClass& finalUcClass);
 
     //add/remove a class to a student
-    Request(requestType type, Student* student, UcClass* ucClass);
+    Request(requestType type, Student student, UcClass& ucClass);
 
     // Getter for requestType
     requestType getType() const;
 
     // Getter for Student pointer
-    Student* getStudent() const;
+    Student getStudent() const;
 
     // Getter for initialUcClass pointer
-    UcClass* getInitialUcClass() const;
+    UcClass getInitialUcClass() const;
 
     // Getter for finalUcClass pointer
-    UcClass* getFinalUcClass() const;
+    UcClass getFinalUcClass() const;
 
     bool ucAlreadyExits();
 
@@ -59,7 +60,7 @@ public:
 
     static requestType stringToRequestType(const std::string& typeStr);
 
-    bool process(const vector<UcClass>& ucClasses);
+    bool process(set<Student>* students, const vector<UcClass>& ucClasses);
 };
 
 

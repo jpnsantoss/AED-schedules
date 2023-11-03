@@ -18,8 +18,6 @@ private:
 
 public:
     Lesson(string weekDay, double start, double duration, string type);
-
-    // Getter methods
     double getStart() const;
     double getEnd() const;
     std::string getType() const;
