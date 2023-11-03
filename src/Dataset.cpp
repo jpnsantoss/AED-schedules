@@ -1,3 +1,6 @@
+//
+// Created by jpsantos on 25-10-2023.
+//
 
 #include "Dataset.h"
 /**
@@ -145,7 +148,7 @@ void Dataset::handleRequests() {
     while(!requests.empty()) {
         Request request = requests.front();
         if(request.process(&students, ucClasses)) {
-               history.push(request);
+            history.push(request);
         }
 
         requests.pop();

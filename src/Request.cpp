@@ -32,14 +32,14 @@ Request::Request(requestType type, Student student, UcClass& ucClass)
  * @return true if students of class to add has a difference not greater than 3 students to the minimum class, false otherwise.
  */
 bool Request::checkBalance(const std::list<UcClass>& ucClasses) {
-        int min = ucClasses.begin()->getStudentsNumber();
-        for (const UcClass& ucClass: ucClasses) {
+    int min = ucClasses.begin()->getStudentsNumber();
+    for (const UcClass& ucClass: ucClasses) {
 
-            if(ucClass.getUcClassCodes().first == finalUcClass.getUcClassCodes().first) {
-                if(ucClass.getStudentsNumber() < min) min = ucClass.getStudentsNumber();
-            }
+        if(ucClass.getUcClassCodes().first == finalUcClass.getUcClassCodes().first) {
+            if(ucClass.getStudentsNumber() < min) min = ucClass.getStudentsNumber();
         }
-        if(finalUcClass.getStudentsNumber() - min > 3) return false;
+    }
+    if(finalUcClass.getStudentsNumber() - min > 3) return false;
     return true;
 }
 
@@ -91,7 +91,7 @@ Student Request::getStudent() const  {
  * @return initialUcClass
  */
 UcClass Request::getInitialUcClass() const {
-        return initialUcClass;
+    return initialUcClass;
 }
 
 /**
