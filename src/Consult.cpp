@@ -1,9 +1,33 @@
-//
-// Created by Maureen Ah-shu🍩 on 29/10/2023.
-//
+/**
+*@file Consult.cpp
+*Funções que organizam os dados, de modo a consultá-los.
+**/
 
 #include "Consult.h"
 #include <algorithm>
+
+/**
+*@brief Construtor padrão da classe Consult.
+**/
+
+Consult::Consult() {}
+
+/**
+*@brief Construtor que recebe um objeto Dataset.
+*@param dataset - conjunto de dados a ser usado para a consulta.
+**/
+
+Consult::Consult(const Dataset &dataset) {
+    this->data = dataset;
+}
+
+/**
+*@brief Mostra o horário de um estudante.
+Complexidade: O(n)
+*@param code - código do estudante.
+*@see Schedule
+*@return lista de objetos Schedule representando o horário do estudante.
+**/
 
 list<Schedule> Consult::findStudentSchedule(const string& code) {
     list<Schedule> schedule;
@@ -33,6 +57,14 @@ list<Schedule> Consult::findStudentSchedule(const string& code) {
     return orderSchedule(schedule);
 }
 
+/**
+*@brief Mostra o horário de uma turma.
+Complexidade: O(n)
+*@param code - código da turma.
+*@see Schedule
+*@return lista de objetos Schedule representando o horário da turma.
+**/
+
 list<Schedule> Consult::findClassSchedule(string& code) {
     vector<Lesson> result;
     list<Schedule> schedule;
@@ -59,6 +91,14 @@ list<Schedule> Consult::findClassSchedule(string& code) {
     return orderSchedule(schedule);
 }
 
+/**
+*@brief Mostra a lista de estudantes de uma turma.
+Complexidade: O(n*m)
+*@param code - código da turma.
+*@see Student
+*@return conjunto de objetos Student representando os estudantes da turma.
+**/
+
 set<Student> Consult::findClassStudents(string& code) {
     set<Student> result;
 
@@ -76,14 +116,22 @@ set<Student> Consult::findClassStudents(string& code) {
     return result;
 }
 
+/**
+*@brief Mostra a lista de estudantes inscritos numa UC.
+Complexidade: O(n*m)
+*@param code - código da UC.
+*@see Student
+*@return conjunto de objetos Student representando os estudantes inscritos na UC.
+**/
+
 set<Student> Consult::findUcStudents(string& code) {
     set<Student> result;
 
     for (char& c: code)
         c = (char)toupper(c);
 
-    for(const auto& s : data.getStudents()) {
-        for(const auto& uc : s.getUcClasses()) {
+    for(const Student& s : data.getStudents()) {
+        for(const UcClass& uc : s.getUcClasses()) {
             string ucCode = uc.getUcClassCodes().first;
             if(code == ucCode)
                 result.insert(s);
@@ -91,6 +139,14 @@ set<Student> Consult::findUcStudents(string& code) {
     }
     return result;
 }
+
+/**
+*@brief Mostra a lista de estudantes de um determinado ano.
+Complexidade: O(n*m)
+*@param year - ano desejado.
+*@see Student
+*@return Conjunto de objetos Student representando os estudantes do ano especificado.
+**/
 
 set<Student> Consult::findYearStudents(int year) {
     set<Student> result;
@@ -106,10 +162,18 @@ set<Student> Consult::findYearStudents(int year) {
     return result;
 }
 
+/**
+*@brief Calcula o número de alunos inscritos em pelo menos N UCs.
+Complexidade: O(n)
+*@param n
+*@see Student
+*@return O número de alunos inscritos em pelo menos n UCs.
+**/
+
 int Consult::studentsRegisteredUcs(int n) {
     int result;
 
-    for(const auto& s : data.getStudents()) {
+    for(const Student& s : data.getStudents()) {
         if (s.getUcClasses().size() >= n) {
             result++;
         }
@@ -117,6 +181,14 @@ int Consult::studentsRegisteredUcs(int n) {
 
     return result;
 }
+
+/**
+*@brief Indica a ocupação da turma.
+Complexidade: O(n*m)
+*@param code - código da turma
+*@see Student
+*@return O número de estudantes matriculados na turma.
+**/
 
 unsigned long Consult::findClassOccupation(string& code) {
     set<Student> result;
@@ -135,6 +207,14 @@ unsigned long Consult::findClassOccupation(string& code) {
     return result.size();
 }
 
+/**
+*@brief Indica a ocupação de um determinado ano.
+Complexidade: O(n*m)
+*@param year - ano desejado
+*@see Student
+*@return O número de estudantes matriculados num ano específico.
+**/
+
 unsigned long Consult::findYearOccupation(int year) {
     set<Student> result;
 
@@ -148,6 +228,14 @@ unsigned long Consult::findYearOccupation(int year) {
 
     return result.size();
 }
+
+/**
+*@brief Indica a ocupação de uma determinada UC.
+Complexidade: O(n*m)
+*@param code - código da turma
+*@see Student
+*@return O número de estudantes matriculados numa determinada turma.
+**/
 
 unsigned long Consult::findUCOccupation(string& code) {
     set<Student> result;
@@ -165,6 +253,14 @@ unsigned long Consult::findUCOccupation(string& code) {
 
     return result.size();
 }
+
+/**
+*@brief Indica as UCs com maior ocupação.
+Complexidade: O((n*m)+ p*log(p))
+*@see Student
+*@see UcClass
+*@return Um vetor de pares do tipo (UC, ocupação) ordenado por ocupação decrescente.
+**/
 
 vector<pair<string, int>> Consult::findGreatestUCs() {
     std::map<std::string, unsigned long> ucOccupations;
@@ -185,6 +281,13 @@ vector<pair<string, int>> Consult::findGreatestUCs() {
     return result;
 }
 
+/**
+*@brief Obtém vetor com as turmas de uma determinada UC.
+Complexidade: O(n)
+*@see UcClass
+*@return Vetor de objetos UcClass, que correspondem às turmas existentes de uma determinada UC.
+**/
+
 vector<UcClass> Consult::listOfClasses(string &code) {
     set<UcClass> ucClass;
 
@@ -201,16 +304,49 @@ vector<UcClass> Consult::listOfClasses(string &code) {
     return classes;
 }
 
-Student Consult::findStudent(std::string &code) {
+/**
+*@brief Encontra um estudante através do seu código.
+Complexidade: O(n)
+*@see Student
+*@return Um apontador para o objeto Student correspondente ao estudante em questão, ou nullptr, se não for encontrado.
+**/
+
+Student * Consult::findStudent(std::string &code) {
     for (char& c: code)
         c = (char)toupper(c);
 
     for(const Student& s: data.getStudents()) {
         if(code == s.getStudentCode())
-            return s;
+            return const_cast<Student *>(&s);
     }
-    return {};
+    return nullptr;
 }
+
+/**
+*@brief Encontra uma UC através do seu código.
+Complexidade: O(n)
+*@see UcClass
+*@return Um apontador para o objeto UcClass correspondente à UC em questão, ou nullptr, se não for encontrada.
+**/
+
+UcClass * Consult::findUc(std::string &code) {
+    for (char& c: code)
+        c = (char)toupper(c);
+
+    for(const UcClass& uc: data.getUcClasses()) {
+        if(code == uc.getUcClassCodes().first)
+            return const_cast<UcClass *>(&uc);
+    }
+    return nullptr;
+}
+
+/**
+*@brief Ordena o horário de cada aula, por dia da semana.
+Complexidade: O(n*log(n))
+*@param schedule - horário a ser ordenado.
+*@see Schedule
+*@return O horário de aulas ordenado.
+**/
 
 list<Schedule> Consult::orderSchedule(list<Schedule> schedule) {
     std::map<std::string, int> weekdaysMap = {

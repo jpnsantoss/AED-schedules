@@ -1,6 +1,7 @@
-//
-// Created by Maureen Ah-shu🍩 on 29/10/2023.
-//
+/**
+*@file Consult.h
+*Funções que organizam os dados, de modo a consultá-los.
+**/
 
 #ifndef AED2324_PRJ1_G56_CONSULT_H
 #define AED2324_PRJ1_G56_CONSULT_H
@@ -22,7 +23,8 @@ struct Schedule {
 
 class Consult {
 public:
-    Consult(Dataset& dataset) : data(dataset) {};
+    Consult();
+    Consult(const Dataset &dataset);
     const vector<Student>& getStudentList(const Dataset& dataset);
     list<Schedule> findStudentSchedule(const string& code);
     list<Schedule> findClassSchedule(string& code);
@@ -35,9 +37,10 @@ public:
     unsigned long findUCOccupation(string& code);
     vector<UcClass> listOfClasses(string& code);
     vector<pair<string, int>> findGreatestUCs();
-    Student findStudent(string& code);
+    Student * findStudent(string& code);
+    UcClass * findUc(string& code);
 private:
-    Dataset& data;
+    Dataset data;
     static list<Schedule> orderSchedule(list<Schedule> schedule);
 };
 
