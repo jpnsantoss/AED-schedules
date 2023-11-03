@@ -1,21 +1,5 @@
-
 #include "Consult.h"
 #include <algorithm>
-
-/**
-*@brief Default Constructor for the Consult class.
-**/
-
-Consult::Consult() {}
-
-/**
-*@brief Constructor that takes a Dataset object.
-*@param dataset - Dataset to be used for the query.
-**/
-
-Consult::Consult(const Dataset &dataset) {
-    this->data = dataset;
-}
 
 /**
 *@brief Displays the schedule of a student.
@@ -126,8 +110,8 @@ std::set<Student> Consult::findUcStudents(std::string& code) {
     for (char& c: code)
         c = (char)toupper(c);
 
-    for(const Student& s : data.getStudents()) {
-        for(const UcClass& uc : s.getUcClasses()) {
+    for(const auto& s : data.getStudents()) {
+        for(const auto& uc : s.getUcClasses()) {
             std::string ucCode = uc.getUcClassCodes().first;
             if(code == ucCode)
                 result.insert(s);
@@ -169,7 +153,7 @@ std::set<Student> Consult::findYearStudents(int year) {
 int Consult::studentsRegisteredUcs(int n) {
     int result;
 
-    for(const Student& s : data.getStudents()) {
+    for(const auto& s : data.getStudents()) {
         if (s.getUcClasses().size() >= n) {
             result++;
         }
@@ -306,37 +290,18 @@ std::vector<UcClass> Consult::listOfClasses(std::string &code) {
 *Complexity: O(n)
 *@param code - Student code.
 *@see Student
-*@return A pointer to the Student object corresponding to the specified Student, or nullptr if not found.
+*@return The Student object with that student code, or nothing if not found.
 **/
 
-Student * Consult::findStudent(std::string &code) {
+Student Consult::findStudent(std::string &code) {
     for (char& c: code)
         c = (char)toupper(c);
 
     for(const Student& s: data.getStudents()) {
         if(code == s.getStudentCode())
-            return const_cast<Student *>(&s);
+            return s;
     }
-    return nullptr;
-}
-
-/**
-*@brief Finds a UC through its code.
-*Complexity: O(n)
-*@param code - UC code.
-*@see UcClass
-*@return A pointer to the UcClass object corresponding to the specified UC, or nullptr if not found.
-**/
-
-UcClass * Consult::findUc(std::string &code) {
-    for (char& c: code)
-        c = (char)toupper(c);
-
-    for(const UcClass& uc: data.getUcClasses()) {
-        if(code == uc.getUcClassCodes().first)
-            return const_cast<UcClass *>(&uc);
-    }
-    return nullptr;
+    return {};
 }
 
 /**

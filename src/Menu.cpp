@@ -15,7 +15,7 @@ void Menu::main() {
          << "*     0) EXIT                            *\n"
          << "*                                        *\n"
          << "******************************************\n"
-         << "Option: " << std::endl;
+         << "Option: ";
     int option;
     do{
         std::cin >> option;
@@ -44,7 +44,7 @@ void Menu::information() {
          << "*                                                          *\n"
          << "*                                                 0) BACK  *\n"
          << "************************************************************\n"
-         << "Option: " << std::endl;
+         << "Option: ";
     int option;
     do{
         std::cin >> option;
@@ -75,7 +75,7 @@ void Menu::registration() {
          << "*                                        *\n"
          << "*                               0) BACK  *\n"
          << "******************************************\n"
-         << "Option: " << std::endl;
+         << "Option: ";
     int option;
     do{
         std::cin >> option;
@@ -237,7 +237,7 @@ void Menu::viewNumStudents() {
     int ucs;
     std::cin >> ucs;
 
-    int num = 0;
+    int num = consult.studentsRegisteredUcs(ucs);
     std::cout << "\nNUMBER OF STUDENTS REGISTERED IN AT LEAST " << ucs << " UCs = " << num << "\n"
          << "0) BACK" << std::endl;
     goToInformationMenu();
