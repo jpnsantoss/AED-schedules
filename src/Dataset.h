@@ -28,7 +28,6 @@ private:
 public:
     Dataset();
 
-    // Getter methods
     const std::set<Student>& getStudents() const;
     const std::vector<UcClass>& getUcClasses() const;
     const std::queue<Request>& getRequests() const;
@@ -36,6 +35,16 @@ public:
     void addRequest(const Request& request);
     void handleRequests();
     void updateHistory();
+    void undoRequest();
+
+    // Add a new student to the dataset
+    void addStudent(const Student& student);
+
+    // Remove a student by student code
+    bool removeStudentByCode(const string& studentCode);
+
+
+void reset();
 };
 
 

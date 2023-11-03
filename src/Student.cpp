@@ -34,6 +34,7 @@ std::string Student::getStudentName() const {
 
 // Setter and Getter methods for ucClasses
 void Student::addUcClass(const UcClass& ucClass) {
+
     ucClasses.push_back(ucClass);
 }
 
@@ -54,8 +55,8 @@ void Student::reset() {
     ucClasses.clear(); // Assuming you want to clear the list of UcClasses
 }
 
-void Student::removeUcClass(UcClass* ucClass) {
-    ucClasses.remove(*ucClass);
+void Student::removeUcClass(UcClass ucClass) {
+    ucClasses.remove(ucClass);
 }
 
 list<Lesson> Student::getLessons() const {

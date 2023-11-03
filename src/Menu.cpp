@@ -86,7 +86,7 @@ void Menu::registration() {
             case 1: menuRegUC(); break;
             case 2: menuRemoveUC(); break;
             case 3: menuSwitchClass(); break;
-            case 4: undo(); break;
+            case 4: data.undoRequest(); main(); break;
             case 0: main(); break;
             default: cout << "Invalid option, please try again: ";
         }
@@ -330,8 +330,8 @@ void Menu::menuRegUC() {
     cin >> studentCode;
     cout << "UC code: ";
     cin >> ucCode;
-    Student* student = consult.findStudent(studentCode);
-    if(student) {
+    Student student = consult.findStudent(studentCode);
+    if(!student.getStudentCode().empty()) {
         vector<UcClass> classes = consult.listOfClasses(ucCode);
 
         cout << "\n*************************************************\n"
@@ -350,7 +350,7 @@ void Menu::menuRegUC() {
             registration();
 
         if(option > 0 && option < classes.size()) {
-        data.addRequest(Request(requestType::Add, student, &classes[option-1]));
+        data.addRequest(Request(requestType::Add, student, classes[option-1]));
         data.handleRequests();
 
         }
@@ -372,12 +372,12 @@ void Menu::menuRemoveUC() {
     cin >> studentCode;
     cout << "UC code: ";
     cin >> ucCode;
-    Student* student = consult.findStudent(studentCode);
-    if(student) {
-        UcClass* initialUcClass;
-        for(UcClass ucClass: student->getUcClasses()) {
+    Student student = consult.findStudent(studentCode);
+    if(!student.getStudentCode().empty()) {
+        UcClass initialUcClass;
+        for(const UcClass& ucClass: student.getUcClasses()) {
             if(ucCode == ucClass.getUcClassCodes().first) {
-                initialUcClass = &ucClass;
+                initialUcClass = ucClass;
             }
         }
 
@@ -404,13 +404,13 @@ void Menu::menuSwitchClass() {
 
     cout << "UC code: ";
     cin >> ucCode;
-    Student* student = consult.findStudent(studentCode);
-    if(student) {
+    Student student = consult.findStudent(studentCode);
+    if(!student.getStudentCode().empty()) {
         vector<UcClass> classes = consult.listOfClasses(ucCode);
-        UcClass* initialUcClass;
-        for(UcClass ucClass: student->getUcClasses()) {
+        UcClass initialUcClass;
+        for(const UcClass& ucClass: student.getUcClasses()) {
             if(ucCode == ucClass.getUcClassCodes().first) {
-                initialUcClass = &ucClass;
+                initialUcClass = ucClass;
             }
         }
 
@@ -430,7 +430,7 @@ void Menu::menuSwitchClass() {
             registration();
 
         if(option > 0 && option < classes.size()) {
-            data.addRequest(Request(requestType::Switch, student, initialUcClass, &classes[option - 1]));
+            data.addRequest(Request(requestType::Switch, student, initialUcClass, classes[option - 1]));
             data.handleRequests();
 
         }
@@ -439,14 +439,6 @@ void Menu::menuSwitchClass() {
              << "0) Back" << endl;
     }
     registration();
-}
-
-/**
- * Undo the last modification.
- * Complexity: .
- */
-void Menu::undo() {
-
 }
 
 /**

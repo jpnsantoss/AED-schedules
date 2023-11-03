@@ -37,7 +37,7 @@ public:
 
     void reset();
 
-    void removeUcClass(UcClass* ucClass);
+    void removeUcClass(UcClass ucClass);
 
     list<Lesson> getLessons() const;
 

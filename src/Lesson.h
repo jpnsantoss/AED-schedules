@@ -8,7 +8,7 @@
 #include <string>
 
 using namespace std;
-
+#include <iostream>
 class Lesson {
 private:
     double start;
@@ -18,8 +18,6 @@ private:
 
 public:
     Lesson(string weekDay, double start, double duration, string type);
-
-    // Getter methods
     double getStart() const;
     double getEnd() const;
     std::string getType() const;

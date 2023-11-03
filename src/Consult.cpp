@@ -5,12 +5,6 @@
 #include "Consult.h"
 #include <algorithm>
 
-Consult::Consult() {}
-
-Consult::Consult(const Dataset &dataset) {
-    this->data = dataset;
-}
-
 list<Schedule> Consult::findStudentSchedule(const string& code) {
     list<Schedule> schedule;
     list<UcClass> ucs;
@@ -207,26 +201,15 @@ vector<UcClass> Consult::listOfClasses(string &code) {
     return classes;
 }
 
-Student * Consult::findStudent(std::string &code) {
+Student Consult::findStudent(std::string &code) {
     for (char& c: code)
         c = (char)toupper(c);
 
     for(const Student& s: data.getStudents()) {
         if(code == s.getStudentCode())
-            return const_cast<Student *>(&s);
+            return s;
     }
-    return nullptr;
-}
-
-UcClass * Consult::findUc(std::string &code) {
-    for (char& c: code)
-        c = (char)toupper(c);
-
-    for(const UcClass& uc: data.getUcClasses()) {
-        if(code == uc.getUcClassCodes().first)
-            return const_cast<UcClass *>(&uc);
-    }
-    return nullptr;
+    return {};
 }
 
 list<Schedule> Consult::orderSchedule(list<Schedule> schedule) {
