@@ -11,7 +11,7 @@ int UcClass::capacity = 0;
  * Will initialize an empty class
  * @brief Default constructor
  */
-UcClass::UcClass() {}
+UcClass::UcClass() : studentsNumber(0) {}
 
 /**
  * Will initialize a class without lessons, lessons are to be added later

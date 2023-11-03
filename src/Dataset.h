@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <set>
-#include <vector>
 #include <queue>
 #include <fstream>
 #include <sstream>
@@ -17,7 +16,7 @@
 class Dataset {
 private:
     set<Student> students;
-    vector<UcClass> ucClasses;
+    list<UcClass> ucClasses;
     queue<Request> requests;
     queue<Request> history;
 
@@ -27,24 +26,13 @@ private:
     void readHistory();
 public:
     Dataset();
-
     const std::set<Student>& getStudents() const;
-    const std::vector<UcClass>& getUcClasses() const;
-    const std::queue<Request>& getRequests() const;
-    const std::queue<Request>& getHistory() const;
+    const std::list<UcClass>& getUcClasses() const;
     void addRequest(const Request& request);
     void handleRequests();
     void updateHistory();
     void undoRequest();
-
-    // Add a new student to the dataset
-    void addStudent(const Student& student);
-
-    // Remove a student by student code
-    bool removeStudentByCode(const string& studentCode);
-
-
-void reset();
+    void reset();
 };
 
 

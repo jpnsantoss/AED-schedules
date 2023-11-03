@@ -20,27 +20,16 @@ private:
 public:
     Student();
     Student(string studentCode, string studentName);
-
-    // Setter and Getter methods
     void setStudentCode(const string& code);
     string getStudentCode() const;
-
     void setStudentName(const string& name);
     string getStudentName() const;
-
     void addUcClass(const UcClass& ucClass);
-
     const list<UcClass>& getUcClasses() const;
-
-    // only to make insert work, dw about it.
     bool operator<(const Student &other) const;
-
     void reset();
-
-    void removeUcClass(UcClass ucClass);
-
+    void removeUcClass(const UcClass& ucClass);
     list<Lesson> getLessons() const;
-
 };
 
 

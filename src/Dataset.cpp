@@ -3,7 +3,14 @@
 //
 
 #include "Dataset.h"
-
+/**
+ * initializes the dataset and populates it with ucClasses, lessons, students. also executes the requests from the history.
+ * @brief Default constructor
+ * @see readUcClasses()
+ * @see readLessons()
+ * @see readStudents()
+ * @see readHistory()
+ */
 Dataset::Dataset() {
     readUcClasses();
     readLessons();
@@ -11,22 +18,26 @@ Dataset::Dataset() {
     readHistory();
 }
 
-const std::set<Student>& Dataset::getStudents() const {
+/**
+ * @brief Getter for students
+ * @return set of students
+ */
+const set<Student>& Dataset::getStudents() const {
     return students;
 }
 
-const std::vector<UcClass>& Dataset::getUcClasses() const {
+/**
+ * @brief Getter for ucClasses
+ * @return list of ucClasses
+ */
+const list<UcClass>& Dataset::getUcClasses() const {
     return ucClasses;
 }
 
-const std::queue<Request>& Dataset::getRequests() const {
-    return requests;
-}
-
-const std::queue<Request>& Dataset::getHistory() const {
-    return history;
-}
-
+/**
+ * Reads the file classes_per_uc.csv and populates the ucClasses list with the data from that file.
+ * @brief classes_per_uc reader
+ */
 void Dataset::readUcClasses() {
     ifstream file("files/classes_per_uc.csv");
     if (!file.is_open()) {
@@ -47,16 +58,20 @@ void Dataset::readUcClasses() {
     file.close();
 }
 
+/**
+ * Reads the file classes.csv and populates each ucClass with its own lessons.
+ * @brief classes_per_uc reader
+ */
 void Dataset::readLessons() {
     ifstream file("files/classes.csv");
     if (!file.is_open()) {
         cout << "Error: File 'classes.csv' not opened." << endl;
-        return;  // Exit the method if the file couldn't be opened.
+        return;
     }
 
     string row, classCode, ucCode, weekday, startHour, duration, type;
 
-    getline(file, row);  // Read and discard the header row.
+    getline(file, row);
 
     while (getline(file, row)) {
         istringstream line(row);
@@ -67,7 +82,6 @@ void Dataset::readLessons() {
         getline(line, duration, ',');
         getline(line, type, '\r');
 
-        // Ensure the Lesson constructor parameters are in the correct order.
         Lesson newLesson(weekday, stof(startHour), stof(duration), type);
 
         for (UcClass& ucClass : ucClasses) {
@@ -79,11 +93,15 @@ void Dataset::readLessons() {
     file.close();
 }
 
+/**
+ * Reads the students_classes.csv file and populates the students set with the data. Also adds the respective ucClasses to each student and sets the capacity.
+ * @brief students_classes reader
+ */
 void Dataset::readStudents() {
     ifstream file("files/students_classes.csv");
     if (!file.is_open()) {
         cout << "Error: File 'students_classes.csv' not opened." << endl;
-        return;  // Exit the method if the file couldn't be opened.
+        return;
     }
     string row, studentCode, studentName, ucCode, classCode, prevStudentCode;
     int maxCapacity = 0;
@@ -120,6 +138,12 @@ void Dataset::readStudents() {
     file.close();
 }
 
+/**
+ * process the list of requests and if passed, adds them to the history, then updates the history file.
+ * @brief Requests queue processor
+ * @see updateHistory()
+ * @see request.process()
+ */
 void Dataset::handleRequests() {
     while(!requests.empty()) {
         Request request = requests.front();
@@ -133,6 +157,10 @@ void Dataset::handleRequests() {
     cout << "Request successful." << endl;
 }
 
+/**
+ * gets the approved requests in history queue and types them into the history.csv file
+ * @brief history.csv file updater
+ */
 void Dataset::updateHistory() {
     ofstream file("files/history.csv", ios::app);
 
@@ -159,11 +187,19 @@ void Dataset::updateHistory() {
     file.close();
 }
 
-
+/**
+ * @brief adds a request to the requests queue
+ * @param request
+ */
 void Dataset::addRequest(const Request &request) {
     requests.push(request);
 }
 
+/**
+ * this gets the data from the history.csv file, handles it accordingly and then process the requests. this function is only called when the dataset starts or resets.
+ * @brief process the requests saved in the history file
+ * @see request.process()
+ */
 void Dataset::readHistory() {
     ifstream file("files/history.csv");
     if (!file.is_open()) {
@@ -214,6 +250,10 @@ void Dataset::readHistory() {
     file.close();
 }
 
+/**
+ * Deletes the last line of the history.csv file and then resets the dataset.
+ * @brief undo the last approved request
+ */
 void Dataset::undoRequest() {
     string line;
     vector<string> lines;
@@ -236,6 +276,14 @@ void Dataset::undoRequest() {
     reset();
 }
 
+/**
+ * Deletes all the data from the dataset and then reads everything again. useful to undo requests.
+ * @brief resets all the data in the dataset.
+ * @see readUcClasses()
+ * @see readLessons()
+ * @see readStudents()
+ * @see readHistory()
+ */
 void Dataset::reset() {
     students.clear();
     ucClasses.clear();

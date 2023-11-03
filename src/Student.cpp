@@ -6,59 +6,101 @@
 
 #include <utility>
 
-// Default constructor
+/**
+ * Will initialize an empty student
+ * @brief Default constructor
+ */
 Student::Student() {}
 
-// Parameterized constructor
+/**
+ * Will initialize a student without ucClasses, ucClasses are to be added later
+ * @brief Parameterized constructor
+ * @param studentCode
+ * @param studentName
+ */
 Student::Student(string  studentCode, string  studentName)
         : studentCode(std::move(studentCode)), studentName(std::move(studentName)) {
 }
 
-// Setter and Getter methods for studentCode
+
+/**
+ * @brief Setter for the student code
+ * @param code - student code
+ */
 void Student::setStudentCode(const std::string& code) {
     studentCode = code;
 }
-
-std::string Student::getStudentCode() const {
+/**
+ * @brief Getter for student code
+ * @return studentCode
+ */
+string Student::getStudentCode() const {
     return studentCode;
 }
 
-// Setter and Getter methods for studentName
+/**
+ * @brief Setter for student name
+ * @param name
+ */
 void Student::setStudentName(const std::string& name) {
     studentName = name;
 }
-
-std::string Student::getStudentName() const {
+/**
+ * @brief Getter for student name
+ * @return
+ */
+string Student::getStudentName() const {
     return studentName;
 }
 
-// Setter and Getter methods for ucClasses
+/**
+ * @brief adds an ucClass to the student
+ * @param ucClass
+ */
 void Student::addUcClass(const UcClass& ucClass) {
 
     ucClasses.push_back(ucClass);
 }
 
+/**
+ * @brief Getter for student ucClasses
+ * @return list of ucClasses
+ */
 const std::list<UcClass>& Student::getUcClasses() const {
     return ucClasses;
 }
 
 
-//useless, only for the set type to work.
+/**
+ * @brief Overlods < operator
+ * @param other
+ * @return true if studentCode < other.studentCode, false otherwise
+ */
 bool Student::operator<(const Student &other) const {
     return studentCode < other.studentCode;
 }
 
+/**
+ * @brief Resets user attributes
+ */
 void Student::reset() {
-    // Reset all fields to their initial state
     studentCode = "";
     studentName = "";
-    ucClasses.clear(); // Assuming you want to clear the list of UcClasses
+    ucClasses.clear();
 }
 
-void Student::removeUcClass(UcClass ucClass) {
+/**
+ * @brief removes an ucClass from the student
+ * @param ucClass
+ */
+void Student::removeUcClass(const UcClass& ucClass) {
     ucClasses.remove(ucClass);
 }
 
+/**
+ * @brief Getter for the lessons the student has
+ * @return list of Lessons
+ */
 list<Lesson> Student::getLessons() const {
     list<Lesson> allLessons;
     for (const UcClass& ucClass : ucClasses) {

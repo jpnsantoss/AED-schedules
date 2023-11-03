@@ -5,19 +5,37 @@
 #include "Request.h"
 
 #include <utility>
+/**
+ * Constructor used to implement a switch request.
+ * @brief switch type constructor
+ * @param type
+ * @param student
+ * @param initialUcClass
+ * @param finalUcClass
+ */
 Request::Request(requestType type, Student student, UcClass& initialUcClass, UcClass& finalUcClass)
         : type(type), student(std::move(student)), initialUcClass(initialUcClass), finalUcClass(finalUcClass) {
-    // Constructor implementation
 }
 
+/**
+ * Constructor used to implement a add or remove requests.
+ * @brief add/remove type constructor
+ * @param type
+ * @param student
+ * @param ucClass
+ */
 Request::Request(requestType type, Student student, UcClass& ucClass)
         : type(type), student(std::move(student)), initialUcClass(ucClass), finalUcClass(ucClass) {
-    // Constructor implementation
 }
 
-
-bool Request::checkBalance(const vector<UcClass>& ucClasses) {
-        int min = ucClasses[0].getStudentsNumber();
+/**
+ * Checks if the class i want to add/switch unbalances or not the students number between classes of that uc.
+ * @brief verifies the balance between the classes of a given Uc.
+ * @param ucClasses
+ * @return true if students of class to add has a difference not greater than 3 students to the minimum class, false otherwise.
+ */
+bool Request::checkBalance(const list<UcClass>& ucClasses) {
+        int min = ucClasses.begin()->getStudentsNumber();
         for (const UcClass& ucClass: ucClasses) {
 
             if(ucClass.getUcClassCodes().first == finalUcClass.getUcClassCodes().first) {
@@ -28,6 +46,10 @@ bool Request::checkBalance(const vector<UcClass>& ucClasses) {
     return true;
 }
 
+/**
+ * @brief checks if the lessons of the new class doesn't conflict with the current lessons
+ * @return true of the lessons are not compatible, false otherwise.
+ */
 bool Request::checkConflict() {
     for(const Lesson& studentLesson: this->student.getLessons()) {
         for(const Lesson& ucClassLesson: this->finalUcClass.getLessons()) {
@@ -38,6 +60,10 @@ bool Request::checkConflict() {
     return false;
 }
 
+/**
+ * @brief checks if user already is in a certain uc
+ * @return true if user is already in that uc, false otherwise
+ */
 bool Request::ucAlreadyExits() {
     for(const UcClass& ucClass: student.getUcClasses()) {
         if(ucClass.getUcClassCodes().first == finalUcClass.getUcClassCodes().first) {
@@ -47,22 +73,42 @@ bool Request::ucAlreadyExits() {
     return false;
 }
 
+/**
+ * @brief Getter for the request type
+ * @return type in format requestType::
+ */
 requestType Request::getType() const {
     return type;
 }
 
+/**
+ * @brief Getter for the student
+ * @return Student
+ */
 Student Request::getStudent() const  {
     return student;
 }
 
+/**
+ * @brief Getter for the initial ucClass
+ * @return initialUcClass
+ */
 UcClass Request::getInitialUcClass() const {
         return initialUcClass;
 }
 
+/**
+ * @brief Getter for the final ucClass
+ * @return finalUcClass
+ */
 UcClass Request::getFinalUcClass() const {
     return finalUcClass;
 }
 
+/**
+ * @brief getter for the request type in string format
+ * @return type in string format
+ */
 string Request::getTypeToString() {
     switch (type) {
         case requestType::Add:
@@ -76,6 +122,11 @@ string Request::getTypeToString() {
     }
 }
 
+/**
+ *
+ * @param typeStr
+ * @return
+ */
 requestType Request::stringToRequestType(const string &typeStr) {
     if (typeStr == "Add") {
         return requestType::Add;
@@ -86,15 +137,26 @@ requestType Request::stringToRequestType(const string &typeStr) {
     }
 }
 
-bool Request::process(set<Student>* students, const vector<UcClass> &ucClasses)  {
+/**
+ * To process the request, first you create a copy of the student, called new student
+ * Then, checks the request type and proceeds accordingly with the proper conditions.
+ * If the requests can pass all the conditions, we apply the changes to the student and then change the current student in the dataset for the new student.
+ * @brief Handles the request and approves it or not
+ * @see ucAlreadyExists()
+ * @see checkConflict()
+ * @see checkBalance()
+ * @param students
+ * @param ucClasses
+ * @return true if the request is approved, false otherwise
+ */
+bool Request::process(set<Student>* students, const list<UcClass> &ucClasses)  {
 
-    auto newStudentItr = (*students).find(this->student);// copy of the student
+    auto newStudentItr = (*students).find(this->student);
     if(newStudentItr==students->end()) {
-        // Student doesn't exist anymore
         cout<<"Failed! Student does not exist anymore!";
         return {};
     }
-    Student newStudent = *newStudentItr;// auxiliary student
+    Student newStudent = *newStudentItr;
     switch(this->type) {
         case requestType::Remove:
             newStudent.removeUcClass(this->initialUcClass);
