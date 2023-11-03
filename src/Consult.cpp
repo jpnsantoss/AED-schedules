@@ -163,7 +163,7 @@ set<Student> Consult::findYearStudents(int year) {
 }
 
 /**
-*@brief Calcula o número de alunos inscritos em pelo menos N UCs
+*@brief Calcula o número de alunos inscritos em pelo menos N UCs.
 Complexidade: O(n)
 *@param n
 *@see Student
@@ -212,7 +212,7 @@ unsigned long Consult::findClassOccupation(string& code) {
 Complexidade: O(n*m)
 *@param year - ano desejado
 *@see Student
-*@return O número de estudantes matriculados no ano específico.
+*@return O número de estudantes matriculados num ano específico.
 **/
 
 unsigned long Consult::findYearOccupation(int year) {
@@ -282,10 +282,10 @@ vector<pair<string, int>> Consult::findGreatestUCs() {
 }
 
 /**
-*@brief Obtém uma lista de turmas
+*@brief Obtém vetor com as turmas de uma determinada UC.
 Complexidade: O(n)
 *@see UcClass
-*@return Um vetor de pares do tipo (UC, ocupação) ordenado por ocupação decrescente.
+*@return Vetor de objetos UcClass, que correspondem às turmas existentes de uma determinada UC.
 **/
 
 vector<UcClass> Consult::listOfClasses(string &code) {
@@ -305,10 +305,10 @@ vector<UcClass> Consult::listOfClasses(string &code) {
 }
 
 /**
-*@brief Indica as UCs com maior ocupação.
-Complexidade:
+*@brief Encontra um estudante através do seu código.
+Complexidade: O(n)
 *@see Student
-*@return Um vetor de pares do tipo (UC, ocupação) ordenado por ocupação decrescente.
+*@return Um apontador para o objeto Student correspondente ao estudante em questão, ou nullptr, se não for encontrado.
 **/
 
 Student * Consult::findStudent(std::string &code) {
@@ -323,10 +323,10 @@ Student * Consult::findStudent(std::string &code) {
 }
 
 /**
-*@brief Indica as UCs com maior ocupação.
-Complexidade:
+*@brief Encontra uma UC através do seu código.
+Complexidade: O(n)
 *@see UcClass
-*@return Um vetor de pares do tipo (UC, ocupação) ordenado por ocupação decrescente.
+*@return Um apontador para o objeto UcClass correspondente à UC em questão, ou nullptr, se não for encontrada.
 **/
 
 UcClass * Consult::findUc(std::string &code) {
