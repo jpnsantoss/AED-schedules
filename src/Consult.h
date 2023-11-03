@@ -1,4 +1,3 @@
-
 #ifndef AED2324_PRJ1_G56_CONSULT_H
 #define AED2324_PRJ1_G56_CONSULT_H
 
@@ -20,8 +19,7 @@ struct Schedule {
 
 class Consult {
 public:
-    Consult();
-    Consult(const Dataset &dataset);
+    Consult(Dataset& dataset) : data(dataset) {};
     const std::vector<Student>& getStudentList(const Dataset& dataset);
     std::list<Schedule> findStudentSchedule(const std::string& code);
     std::list<Schedule> findClassSchedule(std::string& code);
@@ -34,10 +32,9 @@ public:
     unsigned long findUCOccupation(std::string& code);
     std::vector<UcClass> listOfClasses(std::string& code);
     std::vector<std::pair<std::string, int>> findGreatestUCs();
-    Student * findStudent(std::string& code);
-    UcClass * findUc(std::string& code);
+    Student findStudent(std::string& code);
 private:
-    Dataset data;
+    Dataset& data;
     static std::list<Schedule> orderSchedule(std::list<Schedule> schedule);
 };
 

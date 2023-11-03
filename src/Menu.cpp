@@ -14,7 +14,6 @@ void Menu::main() {
          << "*     2) REGISTRATION                    *\n"
          << "*     0) EXIT                            *\n"
          << "*                                        *\n"
-         << "******************************************\n" 
          << "Option: ";
     int option;
     do{
@@ -237,7 +236,7 @@ void Menu::viewNumStudents() {
     int ucs;
     std::cin >> ucs;
 
-    int num = 0;
+    int num = consult.studentsRegisteredUcs(ucs);
     std::cout << "\nNUMBER OF STUDENTS REGISTERED IN AT LEAST " << ucs << " UCs = " << num << "\n"
          << "0) BACK" << std::endl;
     goToInformationMenu();
