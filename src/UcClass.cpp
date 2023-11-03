@@ -1,6 +1,3 @@
-//
-// Created by jpsantos on 25-10-2023.
-//
 
 #include "UcClass.h"
 
@@ -19,7 +16,7 @@ UcClass::UcClass() : studentsNumber(0) {}
  * @param ucCode
  * @param classCode
  */
-UcClass::UcClass(string ucCode, string classCode) {
+UcClass::UcClass(std::string ucCode, std::string classCode) {
     this->ucCode = std::move(ucCode);
     this->classCode = std::move(classCode);
     this->studentsNumber = 0;
@@ -29,7 +26,7 @@ UcClass::UcClass(string ucCode, string classCode) {
  * @brief Getter for uc and class codes
  * @return pair of first:ucCode second:classCode
  */
-pair<string, string> UcClass::getUcClassCodes() const {
+std::pair<std::string, std::string> UcClass::getUcClassCodes() const {
     return make_pair(ucCode, classCode);
 }
 
@@ -45,7 +42,7 @@ int UcClass::getStudentsNumber() const {
  * @brief Getter for the lessons
  * @return list of lessons
  */
-const list<Lesson> &UcClass::getLessons() const {
+const std::list<Lesson> &UcClass::getLessons() const {
     return lessons;
 }
 

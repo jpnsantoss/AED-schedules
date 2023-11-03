@@ -6,8 +6,6 @@
 #include "Menu.h"
 
 
-using namespace std;
-
 int main() {
     Dataset dataset;
     Menu(dataset).main();

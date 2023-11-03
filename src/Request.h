@@ -1,6 +1,3 @@
-//
-// Created by jpsantos on 25-10-2023.
-//
 
 #ifndef AED2324_PRJ1_G56_REQUEST_H
 #define AED2324_PRJ1_G56_REQUEST_H
@@ -11,8 +8,6 @@
 #include <vector>
 #include "UcClass.h"
 #include "Student.h"
-
-using namespace std;
 
 enum requestType{
     Add,
@@ -37,7 +32,7 @@ public:
     bool ucAlreadyExits();
     bool checkConflict();
     bool checkBalance(const list<UcClass> &ucClasses);
-    string getTypeToString();
+    std::string getTypeToString();
     static requestType stringToRequestType(const std::string& typeStr);
     bool process(set<Student>* students, const list<UcClass>& ucClasses);
 };
