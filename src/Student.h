@@ -10,7 +10,7 @@ class Student {
 private:
     std::string studentCode;
     std::string studentName;
-    list<UcClass> ucClasses;
+    std::list<UcClass> ucClasses;
 
 public:
     Student();
@@ -20,11 +20,11 @@ public:
     void setStudentName(const std::string& name);
     std::string getStudentName() const;
     void addUcClass(const UcClass& ucClass);
-    const list<UcClass>& getUcClasses() const;
+    const std::list<UcClass>& getUcClasses() const;
     bool operator<(const Student &other) const;
     void reset();
     void removeUcClass(const UcClass& ucClass);
-    list<Lesson> getLessons() const;
+    std::list<Lesson> getLessons() const;
 };
 
 

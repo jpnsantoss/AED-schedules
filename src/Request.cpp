@@ -31,7 +31,7 @@ Request::Request(requestType type, Student student, UcClass& ucClass)
  * @param ucClasses
  * @return true if students of class to add has a difference not greater than 3 students to the minimum class, false otherwise.
  */
-bool Request::checkBalance(const list<UcClass>& ucClasses) {
+bool Request::checkBalance(const std::list<UcClass>& ucClasses) {
         int min = ucClasses.begin()->getStudentsNumber();
         for (const UcClass& ucClass: ucClasses) {
 
@@ -106,7 +106,7 @@ UcClass Request::getFinalUcClass() const {
  * @brief getter for the request type in string format
  * @return type in string format
  */
-string Request::getTypeToString() {
+std::string Request::getTypeToString() {
     switch (type) {
         case requestType::Add:
             return "Add";
@@ -124,7 +124,7 @@ string Request::getTypeToString() {
  * @param typeStr
  * @return
  */
-requestType Request::stringToRequestType(const string &typeStr) {
+requestType Request::stringToRequestType(const std::string &typeStr) {
     if (typeStr == "Add") {
         return requestType::Add;
     } else if (typeStr == "Remove") {
@@ -146,11 +146,11 @@ requestType Request::stringToRequestType(const string &typeStr) {
  * @param ucClasses
  * @return true if the request is approved, false otherwise
  */
-bool Request::process(set<Student>* students, const list<UcClass> &ucClasses)  {
+bool Request::process(std::set<Student>* students, const std::list<UcClass> &ucClasses)  {
 
     auto newStudentItr = (*students).find(this->student);
     if(newStudentItr==students->end()) {
-        cout<<"Failed! Student does not exist anymore!";
+        std::cout<<"Failed! Student does not exist anymore!";
         return {};
     }
     Student newStudent = *newStudentItr;
@@ -162,27 +162,27 @@ bool Request::process(set<Student>* students, const list<UcClass> &ucClasses)  {
 
         case requestType::Add:
             if(ucAlreadyExits()) {
-                cout << "Student is already enrolled in this uc, try to switch instead." << endl;
+                std::cout << "Student is already enrolled in this uc, try to switch instead." << std::endl;
                 return false;
             }
 
             if(newStudent.getUcClasses().size() >= 6) {
-                cout << "Student is already enrolled in 6 ucs." << endl;
+                std::cout << "Student is already enrolled in 6 ucs." << std::endl;
                 return false;
             }
 
             if(finalUcClass.getStudentsNumber() >= UcClass::capacity) {
-                cout << "This class is already full." << endl;
+                std::cout << "This class is already full." << std::endl;
                 return false;
             }
 
             if(checkConflict()) {
-                cout << "There is a conflict between the Student's classes and the new class." << endl;
+                std::cout << "There is a conflict between the Student's classes and the new class." << std::endl;
                 return false;
             }
 
             if(!checkBalance(ucClasses)) {
-                cout << "The number of students in each class must be balanced." << endl;
+                std::cout << "The number of students in each class must be balanced." << std::endl;
                 return false;
             }
 
@@ -194,24 +194,24 @@ bool Request::process(set<Student>* students, const list<UcClass> &ucClasses)  {
 
         case requestType::Switch:
             if(initialUcClass.getUcClassCodes().first != finalUcClass.getUcClassCodes().first) {
-                cout << "You have to switch classes from the same uc." << endl;
+                std::cout << "You have to switch classes from the same uc." << std::endl;
                 return false;
             }
 
             if(finalUcClass.getStudentsNumber() >= UcClass::capacity) {
-                cout << "This class is already full." << endl;
+                std::cout << "This class is already full." << std::endl;
                 return false;
             }
             newStudent.removeUcClass(initialUcClass);
             initialUcClass.setStudentsNumber(initialUcClass.getStudentsNumber() - 1);
             if(checkConflict()) {
-                cout << "There is a conflict between the Student's classes and the new class." << endl;
+                std::cout << "There is a conflict between the Student's classes and the new class." << std::endl;
                 newStudent.addUcClass(initialUcClass);
                 initialUcClass.setStudentsNumber(initialUcClass.getStudentsNumber() + 1);
                 return false;
             }
             if(!checkBalance(ucClasses)) {
-                cout << "The number of students in each class must be balanced." << endl;
+                std::cout << "The number of students in each class must be balanced." << std::endl;
                 initialUcClass.setStudentsNumber(initialUcClass.getStudentsNumber() + 1);
                 newStudent.addUcClass(initialUcClass);
                 return false;

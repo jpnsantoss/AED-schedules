@@ -12,10 +12,10 @@
 #include "Request.h"
 class Dataset {
 private:
-    set<Student> students;
-    list<UcClass> ucClasses;
-    queue<Request> requests;
-    queue<Request> history;
+    std::set<Student> students;
+    std::list<UcClass> ucClasses;
+    std::queue<Request> requests;
+    std::queue<Request> history;
 
     void readUcClasses();
     void readLessons();

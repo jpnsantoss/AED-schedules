@@ -31,10 +31,10 @@ public:
     UcClass getFinalUcClass() const;
     bool ucAlreadyExits();
     bool checkConflict();
-    bool checkBalance(const list<UcClass> &ucClasses);
+    bool checkBalance(const std::list<UcClass> &ucClasses);
     std::string getTypeToString();
     static requestType stringToRequestType(const std::string& typeStr);
-    bool process(set<Student>* students, const list<UcClass>& ucClasses);
+    bool process(std::set<Student>* students, const std::list<UcClass>& ucClasses);
 };
 
 

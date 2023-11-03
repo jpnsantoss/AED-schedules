@@ -19,7 +19,7 @@ Dataset::Dataset() {
  * @brief Getter for students
  * @return set of students
  */
-const set<Student>& Dataset::getStudents() const {
+const std::set<Student>& Dataset::getStudents() const {
     return students;
 }
 
@@ -27,7 +27,7 @@ const set<Student>& Dataset::getStudents() const {
  * @brief Getter for ucClasses
  * @return list of ucClasses
  */
-const list<UcClass>& Dataset::getUcClasses() const {
+const std::list<UcClass>& Dataset::getUcClasses() const {
     return ucClasses;
 }
 
@@ -36,17 +36,17 @@ const list<UcClass>& Dataset::getUcClasses() const {
  * @brief classes_per_uc reader
  */
 void Dataset::readUcClasses() {
-    ifstream file("files/classes_per_uc.csv");
+    std::ifstream file("files/classes_per_uc.csv");
     if (!file.is_open()) {
-        cout << "Error: File 'classes_per_uc.csv' not opened." << endl;
+        std::cout << "Error: File 'classes_per_uc.csv' not opened." << std::endl;
         return;
     }
 
-    string row, ucCode, classCode;
+    std::string row, ucCode, classCode;
     getline(file, row);
 
     while (getline(file, row)) {
-        istringstream line(row);
+        std::istringstream line(row);
         getline(line, ucCode, ',');
         getline(line, classCode, '\r');
 
@@ -60,18 +60,18 @@ void Dataset::readUcClasses() {
  * @brief classes_per_uc reader
  */
 void Dataset::readLessons() {
-    ifstream file("files/classes.csv");
+    std::ifstream file("files/classes.csv");
     if (!file.is_open()) {
-        cout << "Error: File 'classes.csv' not opened." << endl;
+        std::cout << "Error: File 'classes.csv' not opened." << std::endl;
         return;
     }
 
-    string row, classCode, ucCode, weekday, startHour, duration, type;
+    std::string row, classCode, ucCode, weekday, startHour, duration, type;
 
     getline(file, row);
 
     while (getline(file, row)) {
-        istringstream line(row);
+        std::istringstream line(row);
         getline(line, classCode, ',');
         getline(line, ucCode, ',');
         getline(line, weekday, ',');
@@ -95,18 +95,18 @@ void Dataset::readLessons() {
  * @brief students_classes reader
  */
 void Dataset::readStudents() {
-    ifstream file("files/students_classes.csv");
+    std::ifstream file("files/students_classes.csv");
     if (!file.is_open()) {
-        cout << "Error: File 'students_classes.csv' not opened." << endl;
+        std::cout << "Error: File 'students_classes.csv' not opened." << std::endl;
         return;
     }
-    string row, studentCode, studentName, ucCode, classCode, prevStudentCode;
+    std::string row, studentCode, studentName, ucCode, classCode, prevStudentCode;
     int maxCapacity = 0;
     Student currentStudent;
     getline(file, row);
 
     while(getline(file, row)) {
-        istringstream line(row);
+        std::istringstream line(row);
         getline(line, studentCode, ',');
         getline(line, studentName, ',');
         getline(line, ucCode, ',');
@@ -151,7 +151,7 @@ void Dataset::handleRequests() {
         requests.pop();
     }
     updateHistory();
-    cout << "Request successful." << endl;
+    std::cout << "Request successful." << std::endl;
 }
 
 /**
@@ -159,7 +159,7 @@ void Dataset::handleRequests() {
  * @brief history.csv file updater
  */
 void Dataset::updateHistory() {
-    ofstream file("files/history.csv", ios::app);
+    std::ofstream file("files/history.csv", std::ios::app);
 
     while (!history.empty()) {
         Request request = history.front();
@@ -179,7 +179,7 @@ void Dataset::updateHistory() {
                  << request.getFinalUcClass().getUcClassCodes().second;
         }
 
-        file << endl;
+        file << std::endl;
     }
     file.close();
 }
@@ -198,22 +198,22 @@ void Dataset::addRequest(const Request &request) {
  * @see request.process()
  */
 void Dataset::readHistory() {
-    ifstream file("files/history.csv");
+    std::ifstream file("files/history.csv");
     if (!file.is_open()) {
-        cout << "Error: File 'history.csv' not opened." << endl;
+        std::cout << "Error: File 'history.csv' not opened." << std::endl;
         return;
     }
 
-    string row, strType, studentCode;
+    std::string row, strType, studentCode;
 
     while (getline(file, row)) {
-        istringstream line(row);
+        std::istringstream line(row);
         getline(line, strType, ',');
         getline(line, studentCode, ',');
         Student student = *(students.find(Student(studentCode, "Irrelevant")));
         requestType type = Request::stringToRequestType(strType);
         if(type == requestType::Switch) {
-            string initialUcStr, initialClassStr, finalUcStr, finalClassStr;
+            std::string initialUcStr, initialClassStr, finalUcStr, finalClassStr;
             getline(line, initialUcStr, ',');
             getline(line, initialClassStr, ',');
             getline(line, finalUcStr, ',');
@@ -231,7 +231,7 @@ void Dataset::readHistory() {
             request.process(&students, ucClasses);
 
         } else {
-            string ucStr, classStr;
+            std::string ucStr, classStr;
             getline(line, ucStr, ',');
             getline(line, classStr, '\r');
             UcClass requestUcClass;
@@ -252,16 +252,16 @@ void Dataset::readHistory() {
  * @brief undo the last approved request
  */
 void Dataset::undoRequest() {
-    string line;
-    vector<string> lines;
-    ifstream infile("files/history.csv");
+    std::string line;
+    std::vector<std::string> lines;
+    std::ifstream infile("files/history.csv");
 
     while (getline(infile,line)) {
         lines.push_back(line);
     }
     infile.close();
 
-    ofstream outfile("files/history.csv");
+    std::ofstream outfile("files/history.csv");
     if (outfile.is_open())
     {
         for (int i=0; i < lines.size()-1; i++)
