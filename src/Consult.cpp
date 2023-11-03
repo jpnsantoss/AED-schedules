@@ -10,7 +10,7 @@ Consult::Consult() {}
 
 /**
 *@brief Constructor that takes a Dataset object.
-*@param dataset - dataset to be used for the query.
+*@param dataset - Dataset to be used for the query.
 **/
 
 Consult::Consult(const Dataset &dataset) {
@@ -25,9 +25,9 @@ Consult::Consult(const Dataset &dataset) {
 *@return A list of Schedule objects representing the student's schedule.
 **/
 
-list<Schedule> Consult::findStudentSchedule(const string& code) {
-    list<Schedule> schedule;
-    list<UcClass> ucs;
+std::list<Schedule> Consult::findStudentSchedule(const std::string& code) {
+    std::list<Schedule> schedule;
+    std::list<UcClass> ucs;
 
     for(const Student& s : data.getStudents()) {
         if(code == s.getStudentCode()) {
@@ -61,9 +61,9 @@ list<Schedule> Consult::findStudentSchedule(const string& code) {
 *@return A list of Schedule objects representing the class schedule.
 **/
 
-list<Schedule> Consult::findClassSchedule(string& code) {
-    vector<Lesson> result;
-    list<Schedule> schedule;
+std::list<Schedule> Consult::findClassSchedule(std::string& code) {
+    std::vector<Lesson> result;
+    std::list<Schedule> schedule;
 
     for (char& c: code)
         c = (char)toupper(c);
@@ -95,15 +95,15 @@ list<Schedule> Consult::findClassSchedule(string& code) {
 *@return A set of Student objects representing the students in the class.
 **/
 
-set<Student> Consult::findClassStudents(string& code) {
-    set<Student> result;
+std::set<Student> Consult::findClassStudents(std::string& code) {
+    std::set<Student> result;
 
     for (char& c: code)
         c = (char)toupper(c);
 
     for(const Student& s : data.getStudents()) {
         for(const UcClass& uc : s.getUcClasses()) {
-            string classCode = uc.getUcClassCodes().second;
+            std::string classCode = uc.getUcClassCodes().second;
             if(code == classCode)
                 result.insert(s);
         }
@@ -120,15 +120,15 @@ set<Student> Consult::findClassStudents(string& code) {
 *@return A set of Student objects Student representing the students enrolled in the UC.
 **/
 
-set<Student> Consult::findUcStudents(string& code) {
-    set<Student> result;
+std::set<Student> Consult::findUcStudents(std::string& code) {
+    std::set<Student> result;
 
     for (char& c: code)
         c = (char)toupper(c);
 
     for(const Student& s : data.getStudents()) {
         for(const UcClass& uc : s.getUcClasses()) {
-            string ucCode = uc.getUcClassCodes().first;
+            std::string ucCode = uc.getUcClassCodes().first;
             if(code == ucCode)
                 result.insert(s);
         }
@@ -139,18 +139,18 @@ set<Student> Consult::findUcStudents(string& code) {
 /**
 *@brief Displays the list of students from a specific year.
 *Complexity: O(n*m)
-*@param year - desired year.
+*@param year - Desired year.
 *@see Student
 *@return A set of Students objects representing the students from the specified year.
 **/
 
-set<Student> Consult::findYearStudents(int year) {
-    set<Student> result;
+std::set<Student> Consult::findYearStudents(int year) {
+    std::set<Student> result;
 
     for(const Student& s : data.getStudents()) {
         for(const UcClass& uc : s.getUcClasses()) {
-            string str = uc.getUcClassCodes().second.substr(0, 1);
-            if(to_string(year) == str)
+            std::string str = uc.getUcClassCodes().second.substr(0, 1);
+            if(std::to_string(year) == str)
                 result.insert(s);
         }
     }
@@ -161,7 +161,7 @@ set<Student> Consult::findYearStudents(int year) {
 /**
 *@brief Calculates the number of students enrolled in at least n UCs.
 *Complexity: O(n)
-*@param n - minimum number of UCs a student should be enrolled in.
+*@param n - The minimum number of UCs a student should be enrolled in.
 *@see Student
 *@return The number of students enrolled in at least n UCs.
 **/
@@ -186,15 +186,15 @@ int Consult::studentsRegisteredUcs(int n) {
 *@return The number of students enrolled in the class.
 **/
 
-unsigned long Consult::findClassOccupation(string& code) {
-    set<Student> result;
+unsigned long Consult::findClassOccupation(std::string& code) {
+    std::set<Student> result;
 
     for (char& c: code)
         c = (char)toupper(c);
 
     for(const Student& s : data.getStudents()) {
         for(const UcClass& uc : s.getUcClasses()) {
-            string classCode = uc.getUcClassCodes().second;
+            std::string classCode = uc.getUcClassCodes().second;
             if(code == classCode)
                 result.insert(s);
         }
@@ -212,12 +212,12 @@ unsigned long Consult::findClassOccupation(string& code) {
 **/
 
 unsigned long Consult::findYearOccupation(int year) {
-    set<Student> result;
+    std::set<Student> result;
 
     for(const Student& s : data.getStudents()) {
         for(const UcClass& uc : s.getUcClasses()) {
-            string str = uc.getUcClassCodes().second.substr(0, 1);
-            if(to_string(year) == str)
+            std::string str = uc.getUcClassCodes().second.substr(0, 1);
+            if(std::to_string(year) == str)
                 result.insert(s);
         }
     }
@@ -233,15 +233,15 @@ unsigned long Consult::findYearOccupation(int year) {
 *@return The number of students enrolled in the specified UC.
 **/
 
-unsigned long Consult::findUCOccupation(string& code) {
-    set<Student> result;
+unsigned long Consult::findUCOccupation(std::string& code) {
+    std::set<Student> result;
 
     for (char& c: code)
         c = (char)toupper(c);
 
     for(const Student& s : data.getStudents()) {
         for(const UcClass& uc : s.getUcClasses()) {
-            string ucCode = uc.getUcClassCodes().first;
+            std::string ucCode = uc.getUcClassCodes().first;
             if(code == ucCode)
                 result.insert(s);
         }
@@ -258,17 +258,17 @@ unsigned long Consult::findUCOccupation(string& code) {
 *@return A vector of pairs (UC, occupation) sorted by decreasing occupation.
 **/
 
-vector<pair<string, int>> Consult::findGreatestUCs() {
+std::vector<std::pair<std::string, int>> Consult::findGreatestUCs() {
     std::map<std::string, unsigned long> ucOccupations;
 
     for (const Student& s : data.getStudents()) {
         for (const UcClass& uc : s.getUcClasses()) {
-            string ucCode = uc.getUcClassCodes().first;
+            std::string ucCode = uc.getUcClassCodes().first;
             ucOccupations[ucCode]++;
         }
     }
 
-    vector<pair<string, int>> result(ucOccupations.begin(), ucOccupations.end());
+    std::vector<std::pair<std::string, int>> result(ucOccupations.begin(), ucOccupations.end());
 
     sort(result.begin(), result.end(), [](const auto& map1, const auto& map2) {
         return map2.second < map1.second;
@@ -285,8 +285,8 @@ vector<pair<string, int>> Consult::findGreatestUCs() {
 *@return A vector of UcClass objects corresponding to all existing classes of the specified UC.
 **/
 
-vector<UcClass> Consult::listOfClasses(string &code) {
-    set<UcClass> ucClass;
+std::vector<UcClass> Consult::listOfClasses(std::string &code) {
+    std::set<UcClass> ucClass;
 
     for (char& c: code)
         c = (char)toupper(c);
@@ -296,7 +296,7 @@ vector<UcClass> Consult::listOfClasses(string &code) {
             ucClass.insert(uc);
     }
 
-    vector<UcClass> classes(ucClass.begin(), ucClass.end());
+    std::vector<UcClass> classes(ucClass.begin(), ucClass.end());
 
     return classes;
 }
@@ -347,7 +347,7 @@ UcClass * Consult::findUc(std::string &code) {
 *@return The sorted schedule.
 **/
 
-list<Schedule> Consult::orderSchedule(list<Schedule> schedule) {
+std::list<Schedule> Consult::orderSchedule(std::list<Schedule> schedule) {
     std::map<std::string, int> weekdaysMap = {
             {"Monday", 1},
             {"Tuesday", 2},

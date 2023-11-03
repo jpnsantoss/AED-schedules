@@ -21,23 +21,23 @@ class Consult {
 public:
     Consult();
     Consult(const Dataset &dataset);
-    const vector<Student>& getStudentList(const Dataset& dataset);
-    list<Schedule> findStudentSchedule(const string& code);
-    list<Schedule> findClassSchedule(string& code);
-    set<Student> findClassStudents(string& code);
-    set<Student> findUcStudents(string& code);
-    set<Student> findYearStudents(int year);
+    const std::vector<Student>& getStudentList(const Dataset& dataset);
+    std::list<Schedule> findStudentSchedule(const std::string& code);
+    std::list<Schedule> findClassSchedule(std::string& code);
+    std::set<Student> findClassStudents(std::string& code);
+    std::set<Student> findUcStudents(std::string& code);
+    std::set<Student> findYearStudents(int year);
     int studentsRegisteredUcs(int n);
-    unsigned long findClassOccupation(string& code);
+    unsigned long findClassOccupation(std::string& code);
     unsigned long findYearOccupation(int year);
-    unsigned long findUCOccupation(string& code);
-    vector<UcClass> listOfClasses(string& code);
-    vector<pair<string, int>> findGreatestUCs();
-    Student * findStudent(string& code);
-    UcClass * findUc(string& code);
+    unsigned long findUCOccupation(std::string& code);
+    std::vector<UcClass> listOfClasses(std::string& code);
+    std::vector<std::pair<std::string, int>> findGreatestUCs();
+    Student * findStudent(std::string& code);
+    UcClass * findUc(std::string& code);
 private:
     Dataset data;
-    static list<Schedule> orderSchedule(list<Schedule> schedule);
+    static std::list<Schedule> orderSchedule(std::list<Schedule> schedule);
 };
 
 
