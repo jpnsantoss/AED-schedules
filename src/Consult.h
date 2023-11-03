@@ -7,7 +7,7 @@
 #include "Student.h"
 #include "UcClass.h"
 
-using namespace std;
+
 struct Schedule {
     std::string ucCode;
     std::string classCode;
