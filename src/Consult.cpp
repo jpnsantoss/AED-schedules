@@ -281,6 +281,13 @@ vector<pair<string, int>> Consult::findGreatestUCs() {
     return result;
 }
 
+/**
+*@brief Obtém uma lista de turmas
+Complexidade: O(n)
+*@see UcClass
+*@return Um vetor de pares do tipo (UC, ocupação) ordenado por ocupação decrescente.
+**/
+
 vector<UcClass> Consult::listOfClasses(string &code) {
     set<UcClass> ucClass;
 
@@ -297,6 +304,13 @@ vector<UcClass> Consult::listOfClasses(string &code) {
     return classes;
 }
 
+/**
+*@brief Indica as UCs com maior ocupação.
+Complexidade:
+*@see Student
+*@return Um vetor de pares do tipo (UC, ocupação) ordenado por ocupação decrescente.
+**/
+
 Student * Consult::findStudent(std::string &code) {
     for (char& c: code)
         c = (char)toupper(c);
@@ -307,6 +321,13 @@ Student * Consult::findStudent(std::string &code) {
     }
     return nullptr;
 }
+
+/**
+*@brief Indica as UCs com maior ocupação.
+Complexidade:
+*@see UcClass
+*@return Um vetor de pares do tipo (UC, ocupação) ordenado por ocupação decrescente.
+**/
 
 UcClass * Consult::findUc(std::string &code) {
     for (char& c: code)
