@@ -1,3 +1,4 @@
+
 #ifndef AED2324_PRJ1_G56_CONSULT_H
 #define AED2324_PRJ1_G56_CONSULT_H
 
@@ -5,7 +6,6 @@
 #include "Lesson.h"
 #include "Student.h"
 #include "UcClass.h"
-
 
 struct Schedule {
     std::string ucCode;

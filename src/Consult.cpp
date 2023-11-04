@@ -1,3 +1,4 @@
+
 #include "Consult.h"
 #include <algorithm>
 
@@ -110,8 +111,8 @@ std::set<Student> Consult::findUcStudents(std::string& code) {
     for (char& c: code)
         c = (char)toupper(c);
 
-    for(const auto& s : data.getStudents()) {
-        for(const auto& uc : s.getUcClasses()) {
+    for(const Student& s : data.getStudents()) {
+        for(const UcClass& uc : s.getUcClasses()) {
             std::string ucCode = uc.getUcClassCodes().first;
             if(code == ucCode)
                 result.insert(s);
@@ -153,7 +154,7 @@ std::set<Student> Consult::findYearStudents(int year) {
 int Consult::studentsRegisteredUcs(int n) {
     int result;
 
-    for(const auto& s : data.getStudents()) {
+    for(const Student& s : data.getStudents()) {
         if (s.getUcClasses().size() >= n) {
             result++;
         }
