@@ -230,7 +230,6 @@ void Menu::viewStudentsCCY() {
 
 /**
  *  Outputs the number of students from a given number of UCs.
- *  Complexity:
  */
 void Menu::viewNumStudents() {
     std::cout << "Enter number of UCs: ";
@@ -317,7 +316,6 @@ void Menu::viewUCgreatest() {
 
 /**
  *  Menu for registering a student in a specific UC and class.
- *  Complexity: .
  */
 void Menu::menuRegUC() {
     int option;
@@ -360,7 +358,6 @@ if(!student.getStudentCode().empty()) {
 
 /**
  *  Menu for remove a student in a specific UC and class.
- *  Complexity: .
  */
 void Menu::menuRemoveUC() {
     std::string studentCode;
@@ -390,7 +387,6 @@ void Menu::menuRemoveUC() {
 
 /**
  *  Menu for changing a student's class in a given UC.
- *  Complexity: .
  */
 void Menu::menuSwitchClass() {
     int option;
