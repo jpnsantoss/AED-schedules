@@ -2,8 +2,8 @@
 #include "Menu.h"
 
 /**
- *  Outputs the Main menu.
- *  Complexity: O(1).
+ *@brief Outputs the Main menu.
+ *Complexity: O(1).
  */
 void Menu::main() {
     std::cout << "******************************************\n"
@@ -29,8 +29,8 @@ void Menu::main() {
 }
 
 /**
- *  Outputs the Information menu.
- *  Complexity: O(1).
+ *@brief Outputs the Information menu.
+ *Complexity: O(1).
  */
 void Menu::information() {
     std::cout << "************************************************************\n"
@@ -61,8 +61,8 @@ void Menu::information() {
 }
 
 /**
- *   Outputs the Registration menu.
- *   Complexity: O(1).
+ *@brief Outputs the Registration menu.
+ *Complexity: O(1).
  */
 void Menu::registration() {
     std::cout << "******************************************\n"
@@ -91,10 +91,10 @@ void Menu::registration() {
 }
 
 /**
- *  Asks the user what option they want;
- *  1) If they want to see the student schedule.
- *  2) If they want to see the class schedule.
- *  Complexity: O(1).
+ *@brief Asks the user what option they want;
+ *1) If they want to see the student schedule.
+ *2) If they want to see the class schedule.
+ *Complexity: O(1).
  */
 void Menu::viewSchedule() {
     std::cout << "Choose one:\n"
@@ -117,8 +117,8 @@ void Menu::viewSchedule() {
 }
 
 /**
- *  Outputs the user schedule.
- *  Complexity: O(n).
+ *@brief Outputs the user schedule.
+ *Complexity: O(n).
  */
 void Menu::viewStudentSchedule() {
     std::cout << "Enter student code: ";
@@ -145,8 +145,8 @@ void Menu::viewStudentSchedule() {
 }
 
 /**
- *  Outputs the class schedule.
- *  Complexity: O(n).
+ *@brief Outputs the class schedule.
+ *Complexity: O(n).
  */
 void Menu::viewClassSchedule() {
     std::cout << "Enter class code: ";
@@ -174,11 +174,11 @@ void Menu::viewClassSchedule() {
 }
 
 /**
- *  Asks the user what option they want;
- *  1) Show all students in a given class.
- *  2) Show all students in a given uc.
- *  3) Show all students in a given year.
- *  Complexity: O(n).
+ *@brief  Asks the user what option they want;
+ *1) Show all students in a given class.
+ *2) Show all students in a given uc.
+ *3) Show all students in a given year.
+ *Complexity: O(n).
  */
 void Menu::viewStudentsCCY() {
     std::set<Student> students;
@@ -229,7 +229,7 @@ void Menu::viewStudentsCCY() {
 }
 
 /**
- *  Outputs the number of students from a given number of UCs.
+ *@brief Outputs the number of students from a given number of UCs.
  */
 void Menu::viewNumStudents() {
     std::cout << "Enter number of UCs: ";
@@ -243,11 +243,11 @@ void Menu::viewNumStudents() {
 }
 
 /**
- *  Asks the user what option they want;
- *  1) The number of students in a given class.
- *  2) The number of students in a given year.
- *  3) The number of students in a given uc.
- *  Complexity: O(1).
+ *@brief Asks the user what option they want;
+ *1) The number of students in a given class.
+ *2) The number of students in a given year.
+ *3) The number of students in a given uc.
+ *Complexity: O(1).
  */
 void Menu::viewCYUoccupation() {
     unsigned long occupation = -1;
@@ -298,8 +298,8 @@ void Menu::viewCYUoccupation() {
 }
 
 /**
- *  Outputs the top 5 of all UCs with the greatest number of students.
- *  Complexity: O(n).
+ *@brief Outputs the top 5 of all UCs with the greatest number of students.
+ *Complexity: O(n).
  */
 void Menu::viewUCgreatest() {
     std::vector<std::pair<std::string, int>> ucs = consult.findGreatestUCs();
@@ -315,7 +315,7 @@ void Menu::viewUCgreatest() {
 }
 
 /**
- *  Menu for registering a student in a specific UC and class.
+ *@brief Menu for registering a student in a specific UC and class.
  */
 void Menu::menuRegUC() {
     int option;
@@ -357,7 +357,7 @@ if(!student.getStudentCode().empty()) {
 }
 
 /**
- *  Menu for remove a student in a specific UC and class.
+ *@brief Menu for remove a student in a specific UC and class.
  */
 void Menu::menuRemoveUC() {
     std::string studentCode;
@@ -386,7 +386,7 @@ void Menu::menuRemoveUC() {
 }
 
 /**
- *  Menu for changing a student's class in a given UC.
+ *@brief Menu for changing a student's class in a given UC.
  */
 void Menu::menuSwitchClass() {
     int option;
@@ -435,8 +435,8 @@ void Menu::menuSwitchClass() {
 }
 
 /**
- *  Function to return to the Information menu.
- *  Complexity: O(1).
+ *@brief Function to return to the Information menu.
+ *Complexity: O(1).
  */
 void Menu::goToInformationMenu() {
     std::cout << "option: ";
@@ -452,8 +452,8 @@ void Menu::goToInformationMenu() {
 }
 
 /**
- *  Function to return to the Registration menu.
- *  Complexity: O(1).
+ *@brief Function to return to the Registration menu.
+ *Complexity: O(1).
  */
 void Menu::goToRegistrationMenu() {
     std::cout << "option: ";
