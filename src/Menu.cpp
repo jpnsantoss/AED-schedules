@@ -325,8 +325,8 @@ void Menu::menuRegUC() {
     std::cin >> studentCode;
     std::cout << "UC code: ";
     std::cin >> ucCode;
-Student student = consult.findStudent(studentCode);
-if(!student.getStudentCode().empty()) {
+    Student student = consult.findStudent(studentCode);
+    if(!student.getStudentCode().empty()) {
         std::vector<UcClass> classes = consult.listOfClasses(ucCode);
 
         std::cout << "\n*************************************************\n"
@@ -353,7 +353,7 @@ if(!student.getStudentCode().empty()) {
         std::cout << "Result not found!\n"
            << "0) Back" << std::endl;
     }
-    registration();
+    goToRegistrationMenu();
 }
 
 /**
@@ -382,7 +382,7 @@ void Menu::menuRemoveUC() {
         std::cout << "Result not found!\n"
              << "0) Back" << std::endl;
     }
-    registration();
+    goToRegistrationMenu();
 }
 
 /**
@@ -431,7 +431,7 @@ void Menu::menuSwitchClass() {
         std::cout << "Result not found!\n"
              << "0) Back" << std::endl;
     }
-    registration();
+    goToRegistrationMenu();
 }
 
 /**

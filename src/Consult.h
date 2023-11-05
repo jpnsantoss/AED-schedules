@@ -20,7 +20,6 @@ struct Schedule {
 class Consult {
 public:
     Consult(Dataset& dataset) : data(dataset) {};
-    const std::vector<Student>& getStudentList(const Dataset& dataset);
     std::list<Schedule> findStudentSchedule(const std::string& code);
     std::list<Schedule> findClassSchedule(std::string& code);
     std::set<Student> findClassStudents(std::string& code);

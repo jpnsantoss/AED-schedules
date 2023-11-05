@@ -146,12 +146,11 @@ void Dataset::handleRequests() {
         Request request = requests.front();
         if(request.process(&students, ucClasses)) {
             history.push(request);
+            updateHistory();
+            std::cout << "Request successful." << std::endl;
         }
-
         requests.pop();
     }
-    updateHistory();
-    std::cout << "Request successful." << std::endl;
 }
 
 /**
