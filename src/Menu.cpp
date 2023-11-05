@@ -130,7 +130,7 @@ void Menu::viewStudentSchedule() {
         std::cout << "*****************************************************************************************\n"
              << "   student schedule\n\n";
 
-        for (const auto &s: schedule) {
+        for (const Schedule &s: schedule) {
             std::cout << "Weekday: " << s.weekday << " \tUC: " << s.ucCode << " \tClass:" << s.classCode
                  << " \tType: " << s.type << " \tStart: " << s.start << "\t\tEnd: " << s.end << "\n";
         }
@@ -158,7 +158,7 @@ void Menu::viewClassSchedule() {
         std::cout << "*****************************************************************************************\n"
              << "   class schedule\n\n";
 
-        for (const auto &s: schedule) {
+        for (const Schedule &s: schedule) {
             std::cout << "Weekday: " << s.weekday << " \tUC: " << s.ucCode << " \tClass:" << s.classCode
                  << " \tType: " << s.type << " \tStart: " << s.start << "\t\tEnd: " << s.end << "\n";
         }
@@ -216,7 +216,7 @@ void Menu::viewStudentsCCY() {
         std::cout << "\n************************************************************\n";
         std::cout << "   list of students\n\n";
 
-        for (const auto &s: students)
+        for (const Student &s: students)
             std::cout << "\t" << s.getStudentCode() << " \t" << s.getStudentName() << "\n";
 
         std::cout << "\n                                                   0) BACK\n"
