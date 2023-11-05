@@ -26,9 +26,7 @@ private:
     void menuRegUC();
     void menuRemoveUC();
     void menuSwitchClass();
-    void undo();
     void goToInformationMenu();
-    void goToRegistrationMenu();
 };
 
 

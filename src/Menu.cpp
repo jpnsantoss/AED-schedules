@@ -325,8 +325,8 @@ void Menu::menuRegUC() {
     std::cin >> studentCode;
     std::cout << "UC code: ";
     std::cin >> ucCode;
-    Student student = consult.findStudent(studentCode);
-    if(!student.getStudentCode().empty()) {
+Student student = consult.findStudent(studentCode);
+if(!student.getStudentCode().empty()) {
         std::vector<UcClass> classes = consult.listOfClasses(ucCode);
 
         std::cout << "\n*************************************************\n"
@@ -353,7 +353,7 @@ void Menu::menuRegUC() {
         std::cout << "Result not found!\n"
            << "0) Back" << std::endl;
     }
-    goToRegistrationMenu();
+    registration();
 }
 
 /**
@@ -382,7 +382,7 @@ void Menu::menuRemoveUC() {
         std::cout << "Result not found!\n"
              << "0) Back" << std::endl;
     }
-    goToRegistrationMenu();
+    registration();
 }
 
 /**
@@ -431,7 +431,7 @@ void Menu::menuSwitchClass() {
         std::cout << "Result not found!\n"
              << "0) Back" << std::endl;
     }
-    goToRegistrationMenu();
+    registration();
 }
 
 /**
@@ -449,21 +449,4 @@ void Menu::goToInformationMenu() {
             std::cout << "Invalid option, please try again: ";
         }
     } while(option != 0);
-}
-
-/**
- *@brief Function to return to the Registration menu.
- *Complexity: O(1).
- */
-void Menu::goToRegistrationMenu() {
-    std::cout << "option: ";
-   int option;
-   do{
-       std::cin >> option;
-       if (option == 0){
-           registration();
-       } else {
-           std::cout << "Invalid option, please try again: ";
-       }
-   } while(option != 0);
 }

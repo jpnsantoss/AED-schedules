@@ -21,7 +21,7 @@ std::list<Schedule> Consult::findStudentSchedule(const std::string& code) {
         }
     }
 
-    for(const auto& u: ucs) {
+    for(const UcClass& u: ucs) {
         for(const Lesson& l: u.getLessons()) {
             Schedule s;
             s.ucCode = u.getUcClassCodes().first;
@@ -55,7 +55,7 @@ std::list<Schedule> Consult::findClassSchedule(std::string& code) {
 
     for(const UcClass& uc: data.getUcClasses()) {
         if(code == uc.getUcClassCodes().second) {
-            for(const auto& l: uc.getLessons()) {
+            for(const Lesson& l: uc.getLessons()) {
                 Schedule s;
                 s.ucCode = uc.getUcClassCodes().first;
                 s.classCode = uc.getUcClassCodes().second;
